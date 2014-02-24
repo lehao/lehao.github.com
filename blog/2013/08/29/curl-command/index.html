@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>curl command - 乐皓博客</title>
+  <meta name="author" content="乐皓">
+
+  
+  <meta name="description" content="一、查看网页源码
+直接在curl命令后加上网址，就可以看到网页源码。我们以网址www.sina.com为例（选择该网址，主要因为它的网页代码较短）： curl www.sina.com 　　&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"& &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.ilehao.com/blog/2013/08/29/curl-command/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="乐皓博客" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">乐皓博客</a></h1>
+  
+    <h2>爱乐，爱皓，爱乐皓.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:www.ilehao.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">博客</a></li>
+  <li><a href="/blog/archives">文章列表</a></li>
+  <li><a href="/aboutme">关于Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Curl Command</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-29T10:12:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>一、查看网页源码
+直接在curl命令后加上网址，就可以看到网页源码。我们以网址www.sina.com为例（选择该网址，主要因为它的网页代码较短）：</p>
+
+<pre><code>curl www.sina.com
+</code></pre>
+
+<p>　　<code>&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+　　&lt;html&gt;&lt;head&gt;
+　　&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+　　&lt;/head&gt;&lt;body&gt;
+　　&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+　　&lt;p&gt;The document has moved &lt;a href="http://www.sina.com.cn/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+　　&lt;/body&gt;&lt;/html&gt;</code>
+如果要把这个网页保存下来，可以使用-o参数，这就相当于使用wget命令了。</p>
+
+<pre><code>curl -o [文件名] www.sina.com
+</code></pre>
+
+<p>二、自动跳转
+有的网址是自动跳转的。使用-L参数，curl就会跳转到新的网址。</p>
+
+<pre><code>curl -L www.sina.com
+</code></pre>
+
+<p>键入上面的命令，结果就自动跳转为www.sina.com.cn。
+三、显示头信息
+-i参数可以显示http response的头信息，连同网页代码一起。</p>
+
+<pre><code>curl -i www.sina.com
+</code></pre>
+
+<p>　　<code>HTTP/1.0 301 Moved Permanently
+　　Date: Sat, 03 Sep 2011 23:44:10 GMT
+　　Server: Apache/2.0.54 (Unix)
+　　Location: http://www.sina.com.cn/
+　　Cache-Control: max-age=3600
+　　Expires: Sun, 04 Sep 2011 00:44:10 GMT
+　　Vary: Accept-Encoding
+　　Content-Length: 231
+　　Content-Type: text/html; charset=iso-8859-1
+　　Age: 3239
+　　X-Cache: HIT from sh201-9.sina.com.cn
+　　Connection: close
+　　&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+　　&lt;html&gt;&lt;head&gt;
+　　&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+　　&lt;/head&gt;&lt;body&gt;
+　　&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+　　&lt;p&gt;The document has moved &lt;a href="http://www.sina.com.cn/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+　　&lt;/body&gt;&lt;/html&gt;</code>
+-I参数则是只显示http response的头信息。
+四、显示通信过程
+-v参数可以显示一次http通信的整个过程，包括端口连接和http request头信息。
+　　curl -v www.sina.com
+　<code>　* About to connect() to www.sina.com port 80 (#0)
+　　* Trying 61.172.201.195... connected
+　　* Connected to www.sina.com (61.172.201.195) port 80 (#0)
+　　&gt; GET / HTTP/1.1
+　　&gt; User-Agent: curl/7.21.3 (i686-pc-linux-gnu) libcurl/7.21.3 OpenSSL/0.9.8o zlib/1.2.3.4 libidn/1.18
+　　&gt; Host: www.sina.com
+　　&gt; Accept: */*
+　　&gt;
+　　* HTTP 1.0, assume close after body
+　　&lt; HTTP/1.0 301 Moved Permanently
+　　&lt; Date: Sun, 04 Sep 2011 00:42:39 GMT
+　　&lt; Server: Apache/2.0.54 (Unix)
+　　&lt; Location: http://www.sina.com.cn/
+　　&lt; Cache-Control: max-age=3600
+　　&lt; Expires: Sun, 04 Sep 2011 01:42:39 GMT
+　　&lt; Vary: Accept-Encoding
+　　&lt; Content-Length: 231
+　　&lt; Content-Type: text/html; charset=iso-8859-1
+　　&lt; X-Cache: MISS from sh201-19.sina.com.cn
+　　&lt; Connection: close
+　　&lt;
+　　&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;
+　　&lt;html&gt;&lt;head&gt;
+　　&lt;title&gt;301 Moved Permanently&lt;/title&gt;
+　　&lt;/head&gt;&lt;body&gt;
+　　&lt;h1&gt;Moved Permanently&lt;/h1&gt;
+　　&lt;p&gt;The document has moved &lt;a href="http://www.sina.com.cn/"&gt;here&lt;/a&gt;.&lt;/p&gt;
+　　&lt;/body&gt;&lt;/html&gt;
+　　* Closing connection #0</code>
+如果你觉得上面的信息还不够，那么下面的命令可以查看更详细的通信过程。</p>
+
+<pre><code>curl --trace output.txt www.sina.com
+</code></pre>
+
+<p>或者</p>
+
+<pre><code>curl --trace-ascii output.txt www.sina.com
+</code></pre>
+
+<p>运行后，请打开output.txt文件查看。
+五、发送表单信息
+发送表单信息有GET和POST两种方法。GET方法相对简单，只要把数据附在网址后面就行。</p>
+
+<pre><code>curl example.com/form.cgi?data=xxx
+</code></pre>
+
+<p>POST方法必须把数据和网址分开，curl就要用到&mdash;data参数。</p>
+
+<pre><code>curl --data "data=xxx" example.com/form.cgi
+</code></pre>
+
+<p>如果你的数据没有经过表单编码，还可以让curl为你编码，参数是&mdash;data-urlencode。</p>
+
+<pre><code>curl --data-urlencode "date=April 1" example.com/form.cgi
+</code></pre>
+
+<p>六、HTTP动词
+curl默认的HTTP动词是GET，使用-X参数可以支持其他动词。</p>
+
+<pre><code>curl -X POST www.example.com
+curl -X DELETE www.example.com
+</code></pre>
+
+<p>七、文件上传
+假定文件上传的表单是下面这样：
+　　<code>&lt;form method="POST" enctype='multipart/form-data' action="upload.cgi"&gt;
+　　　　&lt;input type=file name=upload&gt;
+　　　　&lt;input type=submit name=press value="OK"&gt;
+　　&lt;/form&gt;</code>
+你可以用curl这样上传文件：</p>
+
+<pre><code>curl --form upload=@localfilename --form press=OK [URL]
+</code></pre>
+
+<p>八、Referer字段
+有时你需要在http request头信息中，提供一个referer字段，表示你是从哪里跳转过来的。</p>
+
+<pre><code>curl --referer http://www.example.com http://www.example.com
+</code></pre>
+
+<p>九、User Agent字段
+这个字段是用来表示客户端的设备信息。服务器有时会根据这个字段，针对不同设备，返回不同格式的网页，比如手机版和桌面版。
+iPhone4的User Agent是
+　　Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7
+curl可以这样模拟：</p>
+
+<pre><code>curl --user-agent "[User Agent]" [URL]
+</code></pre>
+
+<p>十、cookie
+使用&mdash;cookie参数，可以让curl发送cookie。</p>
+
+<pre><code>curl --cookie "name=xxx" www.example.com
+</code></pre>
+
+<p>至于具体的cookie的值，可以从http response头信息的Set-Cookie字段中得到。
+十一、增加头信息
+有时需要在http request之中，自行增加一个头信息。&mdash;header参数就可以起到这个作用。</p>
+
+<pre><code>curl --header "xxx: xxxxxx" http://example.com
+</code></pre>
+
+<p>十二、HTTP认证
+有些网域需要HTTP认证，这时curl需要用到&mdash;user参数。</p>
+
+<pre><code>curl --user name:password example.com
+curl www.sina.com view page
+curl -o index.html www.sina.com download page
+curl -L www.sina.com redirect page
+curl -i www.sina.com view head&amp;content
+curl -v www.sina.com traceinfo
+curl --trace output.txt www.sina.com
+curl --trace-ascii output.txt www.sina.com
+</code></pre>
+
+<p>登录到认证页面：</p>
+
+<pre><code>openssl pkcs12 -in  key.pfx -out all.pem -nodes
+curl -L -s -k --cert all.pem www.xxx.com
+</code></pre>
+
+<p>常用curl实例</p>
+
+<p>1，抓取页面内容到一个文件中</p>
+
+<pre><code>curl -o home.html http://www.ilehao.com
+</code></pre>
+
+<p>2，用-O（大写的），后面的url要具体到某个文件，不然抓不下来。我们还可以用正则来抓取东西</p>
+
+<pre><code>curl -O http://www.ilehao.com/images/blogImgs/rtb.jpg
+curl -O http://www.ilehao.com/images/blogImgs/[a-z].jpg
+</code></pre>
+
+<p>3，模拟表单信息，模拟登录，保存cookie信息</p>
+
+<pre><code>curl -c ./cookie_c.txt -F log=aaaa -F pwd=****** http://www.ilehao.com
+</code></pre>
+
+<p>4，模拟表单信息，模拟登录，保存头信息</p>
+
+<pre><code>curl -D ./cookie_D.txt -F log=aaaa -F pwd=****** http://www.ilehao.com
+</code></pre>
+
+<p>-c(小写)产生的cookie和-D里面的cookie是不一样的。</p>
+
+<p>5，使用cookie文件</p>
+
+<pre><code>curl -b ./cookie_c.txt  http://www.ilehao.com
+</code></pre>
+
+<p>6，断点续传，-C(大写的)</p>
+
+<pre><code>curl -C -O http://www.ilehao.com/wp-content/uploads/2010/09/compare_varnish.jpg
+</code></pre>
+
+<p>7，传送数据,最好用登录页面测试，因为你传值过去后，curl回抓数据，你可以看到你传值有没有成功</p>
+
+<pre><code>curl -d log=aaaa  http://www.ilehao.com/wp-login.php
+</code></pre>
+
+<p>8，显示抓取错误，下面这个例子，很清楚的表明了。</p>
+
+<pre><code>curl -f http://www.ilehao.com/asdf
+curl: (22) The requested URL returned error: 404
+curl http://www.ilehao.com/asdf
+</code></pre>
+
+<p><code>&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;404,not found&lt;/TITLE&gt;
+。。。。。。。。。。。。</code></p>
+
+<p>9，伪造来源地址，有的网站会判断，请求来源地址。</p>
+
+<pre><code>curl -e http://localhost http://www.ilehao.com
+</code></pre>
+
+<p>10，当我们经常用curl去搞人家东西的时候，人家会把你的IP给屏蔽掉的,这个时候,我们可以用代理</p>
+
+<pre><code>curl -x 24.10.28.84:32779 -o home.html http://www.ilehao.com
+</code></pre>
+
+<p>11，比较大的东西，我们可以分段下载</p>
+
+<pre><code>curl -r 0-100 -o img.part1 http://www.ilehao.com/wp-content/uploads/2010/09/compare_varnish.jpg
+</code></pre>
+
+<p><code>% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Dload  Upload   Total   Spent    Left  Speed
+100   101  100   101    0     0    105      0 --:--:-- --:--:-- --:--:--     0
+curl -r 100-200 -o img.part2 http://www.ilehao.com/wp-content/uploads/2010/09/compare_varnish.jpg
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Dload  Upload   Total   Spent    Left  Speed
+100   101  100   101    0     0     57      0  0:00:01  0:00:01 --:--:--     0
+curl -r 200- -o img.part3 http://www.ilehao.com/wp-content/uploads/2010/09/compare_varnish.jpg
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Dload  Upload   Total   Spent    Left  Speed
+100  104k  100  104k    0     0  52793      0  0:00:02  0:00:02 --:--:-- 88961
+ls |grep part | xargs du -sh
+4.0K    one.part1
+112K    three.part3
+4.0K    two.part2</code>
+用的时候，把他们cat一下就OK了,cat img.part* >img.jpg</p>
+
+<pre><code>curl -s -o aaa.jpg  http://www.ilehao.com/wp-content/uploads/2010/09/compare_varnish.jpg
+</code></pre>
+
+<p>13，显示下载进度条</p>
+
+<pre><code>curl -# -O  http://www.ilehao.com/wp-content/uploads/2010/09/compare_varnish.jpg
+</code></pre>
+
+<h6>################################################################## 100.0%</h6>
+
+<p>14,通过ftp下载文件</p>
+
+<pre><code>curl -u 用户名:密码 -O http://www.ilehao.com/demo/curtain/bbstudy_files/style.css
+</code></pre>
+
+<p><code>% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Dload  Upload   Total   Spent    Left  Speed
+101  1934  101  1934    0     0   3184      0 --:--:-- --:--:-- --:--:--  7136</code></p>
+
+<p>或者用下面的方式</p>
+
+<pre><code>curl -O ftp://用户名:密码@ip:port/demo/curtain/bbstudy_files/style.css
+</code></pre>
+
+<p>15，通过ftp上传</p>
+
+<pre><code>curl -O ftp://用户名:密码@ip:port/demo/curtain/bbstudy_files/style.css
+</code></pre>
+
+<p>12，不会显示下载进度信息</p>
+
+<pre><code>curl -T test.sql ftp://用户名:密码@ip:port/demo/curtain/bbstudy_files/
+</code></pre>
+
+<p>-a/&mdash;append 上传文件时，附加到目标文件<br>
+-A/&mdash;user-agent <string> 设置用户代理发送给服务器<br><br/>
+&ndash; anyauth 可以使用“任何”身份验证方法<br>
+-b/&mdash;cookie &lt;name=string/file> cookie字符串或文件读取位置<br><br/>
+&ndash; basic 使用HTTP基本验证 <br>
+-B/&mdash;use-ascii 使用ASCII /文本传输<br><br/>
+-c/&mdash;cookie-jar <file> 操作结束后把cookie写入到这个文件中  <br>
+-C/&mdash;continue-at <offset> 断点续转<br>
+-d/&mdash;data <data> HTTP POST方式传送数据<br>
+&mdash;data-ascii <data> 以ascii的方式post数据<br>
+&mdash;data-binary <data> 以二进制的方式post数据<br>
+&mdash;negotiate 使用HTTP身份验证<br>
+&mdash;digest 使用数字身份验证<br>
+&mdash;disable-eprt 禁止使用EPRT或LPRT<br>
+&mdash;disable-epsv 禁止使用EPSV<br>
+-D/&mdash;dump-header <file> 把header信息写入到该文件中<br>
+&mdash;egd-file <file> 为随机数据(SSL)设置EGD socket路径<br>
+&mdash;tcp-nodelay 使用TCP_NODELAY选项<br>
+-e/&mdash;referer 来源网址<br>
+-E/&mdash;cert &lt;cert[:passwd]> 客户端证书文件和密码 (SSL)<br>
+&mdash;cert-type <type> 证书文件类型 (DER/PEM/ENG) (SSL)<br>
+&mdash;key <key> 私钥文件名 (SSL)<br>
+&mdash;key-type <type> 私钥文件类型 (DER/PEM/ENG) (SSL)<br>
+&mdash;pass <pass> 私钥密码 (SSL)<br>
+&mdash;engine <eng> 加密引擎使用 (SSL). &ldquo;&mdash;engine list&rdquo; for list<br>
+&mdash;cacert <file> CA证书 (SSL)<br>
+&mdash;capath <directory> CA目录 (made using c_rehash) to verify peer against (SSL)<br>
+&mdash;ciphers <list> SSL密码<br>
+&mdash;compressed 要求返回是压缩的形势 (using deflate or gzip)<br>
+&mdash;connect-timeout <seconds> 设置最大请求时间<br>
+&mdash;create-dirs 建立本地目录的目录层次结构<br>
+&mdash;crlf 上传是把LF转变成CRLF<br>
+-f/&mdash;fail 连接失败时不显示http错误<br>
+&mdash;ftp-create-dirs 如果远程目录不存在，创建远程目录<br>
+&mdash;ftp-method [multicwd/nocwd/singlecwd] 控制CWD的使用<br>
+&mdash;ftp-pasv 使用 PASV/EPSV 代替端口<br>
+&mdash;ftp-skip-pasv-ip 使用PASV的时候,忽略该IP地址<br>
+&mdash;ftp-ssl 尝试用 SSL/TLS 来进行ftp数据传输<br>
+&mdash;ftp-ssl-reqd 要求用 SSL/TLS 来进行ftp数据传输<br>
+-F/&mdash;form &lt;name=content> 模拟http表单提交数据<br>
+-form-string &lt;name=string> 模拟http表单提交数据<br>
+-g/&mdash;globoff 禁用网址序列和范围使用{}和[]<br>
+-G/&mdash;get 以get的方式来发送数据<br>
+-h/&mdash;help 帮助<br>
+-H/&mdash;header <line>自定义头信息传递给服务器<br>
+&mdash;ignore-content-length 忽略的HTTP头信息的长度<br>
+-i/&mdash;include 输出时包括protocol头信息<br>
+-I/&mdash;head 只显示文档信息<br>
+从文件中读取-j/&mdash;junk-session-cookies忽略会话Cookie<br>
+&ndash; 界面<interface>指定网络接口/地址使用<br>
+&ndash; krb4 &lt;级别>启用与指定的安全级别krb4<br>
+-j/&mdash;junk-session-cookies 读取文件进忽略session cookie<br>
+&mdash;interface <interface> 使用指定网络接口/地址<br>
+&mdash;krb4 <level> 使用指定安全级别的krb4<br>
+-k/&mdash;insecure 允许不使用证书到SSL站点<br>
+-K/&mdash;config 指定的配置文件读取<br>
+-l/&mdash;list-only 列出ftp目录下的文件名称<br>
+&mdash;limit-rate <rate> 设置传输速度<br>
+&mdash;local-port<NUM> 强制使用本地端口号<br>
+-m/&mdash;max-time <seconds> 设置最大传输时间<br>
+&mdash;max-redirs <num> 设置最大读取的目录数<br>
+&mdash;max-filesize <bytes> 设置最大下载的文件总量<br>
+-M/&mdash;manual 显示全手动<br>
+-n/&mdash;netrc 从netrc文件中读取用户名和密码<br>
+&mdash;netrc-optional 使用 .netrc 或者 URL来覆盖-n<br>
+&mdash;ntlm 使用 HTTP NTLM 身份验证<br>
+-N/&mdash;no-buffer 禁用缓冲输出<br>
+-o/&mdash;output 把输出写到该文件中<br>
+-O/&mdash;remote-name 把输出写到该文件中，保留远程文件的文件名<br>
+-p/&mdash;proxytunnel 使用HTTP代理<br>
+&mdash;proxy-anyauth 选择任一代理身份验证方法<br>
+&mdash;proxy-basic 在代理上使用基本身份验证<br>
+&mdash;proxy-digest 在代理上使用数字身份验证<br>
+&mdash;proxy-ntlm 在代理上使用ntlm身份验证<br>
+-P/&mdash;ftp-port <address> 使用端口地址，而不是使用PASV<br>
+-Q/&mdash;quote <cmd>文件传输前，发送命令到服务器<br>
+-r/&mdash;range <range>检索来自HTTP/1.1或FTP服务器字节范围<br>
+&mdash;range-file 读取（SSL）的随机文件<br>
+-R/&mdash;remote-time 在本地生成文件时，保留远程文件时间<br>
+&mdash;retry <num> 传输出现问题时，重试的次数   <br>
+&mdash;retry-delay <seconds> 传输出现问题时，设置重试间隔时间 <br><br/>
+&mdash;retry-max-time <seconds> 传输出现问题时，设置最大重试时间  <br>
+-s/&mdash;silent静音模式。不输出任何东西   <br>
+-S/&mdash;show-error 显示错误   <br>
+&mdash;socks4 &lt;host[:port]> 用socks4代理给定主机和端口 <br/>
+&mdash;socks5 &lt;host[:port]> 用socks5代理给定主机和端口 <br/>
+&mdash;stderr <file> <br/>
+-t/&mdash;telnet-option &lt;OPT=val> Telnet选项设置 <br/>
+&mdash;trace <file> 对指定文件进行debug<br/>
+&mdash;trace-ascii <file> Like &mdash;跟踪但没有hex输出 <br/>
+&mdash;trace-time 跟踪/详细输出时，添加时间戳 <br/>
+-T/&mdash;upload-file <file> 上传文件<br/>
+&mdash;url <URL> Spet URL to work with <br/>
+-u/&mdash;user &lt;user[:password]>设置服务器的用户和密码<br/>
+-U/&mdash;proxy-user &lt;user[:password]>设置代理用户名和密码 <br/>
+-v/&mdash;verbose <br/>
+-V/&mdash;version 显示版本信息 <br/>
+-w/&mdash;write-out [format]什么输出完成后 <br/>
+-x/&mdash;proxy &lt;host[:port]>在给定的端口上使用HTTP代理<br/>
+-X/&mdash;request <command>指定什么命令<br/>
+-y/&mdash;speed-time 放弃限速所要的时间。默认为30 <br/>
+-Y/&mdash;speed-limit 停止传输速度的限制，速度时间&#8217;秒<br/>
+-z/&mdash;time-cond 传送时间设置 <br/>
+-0/&mdash;http1.0 使用HTTP 1.0 <br/>
+-1/&mdash;tlsv1 使用TLSv1（SSL）<br/>
+-2/&mdash;sslv2 使用SSLv2的（SSL）<br/>
+-3/&mdash;sslv3 使用的SSLv3（SSL）<br/>
+&mdash;3p-quote like -Q for the source URL for 3rd party transfer<br/>
+&mdash;3p-url 使用url，进行第三方传送<br/>
+&mdash;3p-user 使用用户名和密码，进行第三方传送<br/>
+-4/&mdash;ipv4 使用IP4<br/>
+-6/&mdash;ipv6 使用IP6<br/>
+&ndash;#/&mdash;progress-bar 用进度条显示当前的传送状态</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">乐皓</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-29T10:12:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/20/it-feedback/" title="Previous Post: IT民工的升迁">&laquo; IT民工的升迁</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/08/30/java-se-8-lambda/" title="Next Post: Java SE 8: Lambda 表达式">Java SE 8: Lambda 表达式 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>About Me</h1>
+  <p><img src="/images/blogImgs/self.jpg"></p>
+  <p>java程序员，老猿人，孩子他爸</p>
+  <p>爱篮球，爱Google, 爱折腾</p>
+  <p>喜欢开源的东西, 喜欢读书和思考</p>
+  <p><img src="/images/email.png"  alt="milehao@gmail.com" /></p>
+</section>
+<section>
+  <h1>Sina 微博</h1>
+<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=3&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2235818362&verifier=f873c807&dpc=1"></iframe>
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/02/21/git-blog-r-and-q/">git blog R&amp;Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/02/20/zhaopin/">alibaba招聘</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/30/spring/">spring</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/30/java-se-8-lambda/">Java SE 8: Lambda 表达式</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/29/curl-command/">curl command</a>
+      </li>
+    
+  </ul>
+</section>
+<section>
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"></span>
+</section><section>
+  <ul id="categories">
+    
+  </ul>
+</section><section>
+  <h1>最新评论</h1>
+  <script type="text/javascript" src="http://lehao.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script>
+</section><section>
+<h1>My Douban</h1>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/ilehao/?show=wishlist&n=9&columns=3&hidelogo=yes&cat=movie|book" ></script>
+</div>
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - 乐皓 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+  <script src="http://s21.cnzz.com/stat.php?id=4841109&web_id=4841109&show=pic" language="JavaScript"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43609148-1', 'ilehao.com');
+  ga('send', 'pageview');
+
+</script>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'lehao';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://www.ilehao.com/blog/2013/08/29/curl-command/';
+        var disqus_url = 'http://www.ilehao.com/blog/2013/08/29/curl-command/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

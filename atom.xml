@@ -1,104 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>乐皓博客</title>
-  <meta name="author" content="乐皓">
-
-  
-  <meta name="description" content="一、rake gen_deploy时提示版本不对 To https://github.com/username/username.github.io
-! [rejected] master -&amp;gt; master (non-fast-forward)
-error: failed to &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://www.ilehao.com/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="乐皓博客" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-
-  
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">乐皓博客</a></h1>
-  
-    <h2>爱乐，爱皓，爱乐皓.</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:www.ilehao.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">博客</a></li>
-  <li><a href="/blog/archives">文章列表</a></li>
-  <li><a href="/aboutme">关于Me</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[乐皓博客]]></title>
+  <link href="http://www.ilehao.com/atom.xml" rel="self"/>
+  <link href="http://www.ilehao.com/"/>
+  <updated>2014-02-24T09:58:20+08:00</updated>
+  <id>http://www.ilehao.com/</id>
+  <author>
+    <name><![CDATA[乐皓]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2014/02/21/git-blog-r-and-q/">Git Blog R&amp;Q</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2014-02-21T14:38:00+08:00" pubdate data-updated="true">Feb 21<span>st</span>, 2014</time>
-        
-         | <a href="/blog/2014/02/21/git-blog-r-and-q/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一、rake gen_deploy时提示版本不对</p>
+  <entry>
+    <title type="html"><![CDATA[git blog R&amp;Q]]></title>
+    <link href="http://www.ilehao.com/blog/2014/02/21/git-blog-r-and-q/"/>
+    <updated>2014-02-21T14:38:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2014/02/21/git-blog-r-and-q</id>
+    <content type="html"><![CDATA[<p>一、rake gen_deploy时提示版本不对</p>
 
 <pre><code>To https://github.com/username/username.github.io
 ! [rejected] master -&amp;gt; master (non-fast-forward)
@@ -121,44 +41,15 @@ git remote add -t master -f origin https://github.com/username/username.github.i
 </code></pre>
 
 <p>现在再试下 <code>rake gen_deploy</code></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/20/zhaopin/">Alibaba招聘</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-20T10:07:00+08:00" pubdate data-updated="true">Feb 20<span>th</span>, 2014</time>
-        
-         | <a href="/blog/2014/02/20/zhaopin/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>alibaba招聘目标层级是P6及以上高级java开发工程师，具体的要求见下：
+  <entry>
+    <title type="html"><![CDATA[alibaba招聘]]></title>
+    <link href="http://www.ilehao.com/blog/2014/02/20/zhaopin/"/>
+    <updated>2014-02-20T10:07:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2014/02/20/zhaopin</id>
+    <content type="html"><![CDATA[<pre><code>alibaba招聘目标层级是P6及以上高级java开发工程师，具体的要求见下：
 1.JAVA基础扎实，熟悉io、多线程、集合等基础框架，熟悉分布式、缓存、消息、搜索等机制；
 2.两年以上使用java进行web开发的经验，熟练使用spring 、MVC等框架，熟悉Linux下的常用命令，熟悉MySQL；
 3.熟悉常用设计模式，有大型分布式、高并发、高负载、高可用性系统设计开发经验；
@@ -167,82 +58,24 @@ git remote add -t master -f origin https://github.com/username/username.github.i
 6.具有良好的抽象设计能力，思路清晰，善于思考，能独立分析和解决问题,责任心强，具备良好的团队合作精神和承受压力的能力。
 有兴趣的请email：marke.chenj@alibaba-inc.com
 </code></pre>
-</div>
+]]></content>
+  </entry>
   
+  <entry>
+    <title type="html"><![CDATA[spring]]></title>
+    <link href="http://www.ilehao.com/blog/2013/08/30/spring/"/>
+    <updated>2013-08-30T17:31:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2013/08/30/spring</id>
+    <content type="html"><![CDATA[<p>spring</p>
+]]></content>
+  </entry>
   
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/30/spring/">Spring</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-30T17:31:00+08:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/08/30/spring/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>spring</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/30/java-se-8-lambda/">Java SE 8: Lambda 表达式</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-30T09:04:00+08:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/08/30/java-se-8-lambda/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Java SE 8在6月13的版本中已经完全了全部的功能。在这些新的功能中，lambda表达式是推动该版本发布的最重要新特性。因为Java第一次尝试引入函数式编程的相关内容。社区对于lambda表达式也期待已久。Lambda表达式的相关内容在JSR 335中定义，本文的内容基于最新的规范和JDK 8 Build b94。 开发环境使用的是Eclipse。</p>
+  <entry>
+    <title type="html"><![CDATA[Java SE 8: Lambda 表达式]]></title>
+    <link href="http://www.ilehao.com/blog/2013/08/30/java-se-8-lambda/"/>
+    <updated>2013-08-30T09:04:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2013/08/30/java-se-8-lambda</id>
+    <content type="html"><![CDATA[<p>Java SE 8在6月13的版本中已经完全了全部的功能。在这些新的功能中，lambda表达式是推动该版本发布的最重要新特性。因为Java第一次尝试引入函数式编程的相关内容。社区对于lambda表达式也期待已久。Lambda表达式的相关内容在JSR 335中定义，本文的内容基于最新的规范和JDK 8 Build b94。 开发环境使用的是Eclipse。</p>
 
 <p>Lambda表达式</p>
 
@@ -351,44 +184,15 @@ List dates = CollectionUtils.map(dateValues, Date::new);
 
 <p>Lambda表达式是Java SE 8在提高开发人员生产效率上的一个重大改进。通过语法上的改进，可以减少开发人员需要编写和维护的代码数量。<br>
 转载：<a href="http://www.infoq.com/cn/articles/Java-se-8-lambda">http://www.infoq.com/cn/articles/Java-se-8-lambda</a></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/29/curl-command/">Curl Command</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-29T10:12:00+08:00" pubdate data-updated="true">Aug 29<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/08/29/curl-command/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一、查看网页源码
+  <entry>
+    <title type="html"><![CDATA[curl command]]></title>
+    <link href="http://www.ilehao.com/blog/2013/08/29/curl-command/"/>
+    <updated>2013-08-29T10:12:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2013/08/29/curl-command</id>
+    <content type="html"><![CDATA[<p>一、查看网页源码
 直接在curl命令后加上网址，就可以看到网页源码。我们以网址www.sina.com为例（选择该网址，主要因为它的网页代码较短）：</p>
 
 <pre><code>curl www.sina.com
@@ -792,44 +596,15 @@ Dload  Upload   Total   Spent    Left  Speed
 -4/&mdash;ipv4 使用IP4<br/>
 -6/&mdash;ipv6 使用IP6<br/>
 &ndash;#/&mdash;progress-bar 用进度条显示当前的传送状态</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/20/it-feedback/">IT民工的升迁</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-20T09:00:00+08:00" pubdate data-updated="true">Mar 20<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/03/20/it-feedback/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>   1、 真正基础雄厚的人应该是可以将一个常用的基础性知识熟记成诵的人。提到一个基本的名词或话题能够将其来龙去脉解释清楚的人。<br/>
+  <entry>
+    <title type="html"><![CDATA[IT民工的升迁]]></title>
+    <link href="http://www.ilehao.com/blog/2013/03/20/it-feedback/"/>
+    <updated>2013-03-20T09:00:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2013/03/20/it-feedback</id>
+    <content type="html"><![CDATA[<p>   1、 真正基础雄厚的人应该是可以将一个常用的基础性知识熟记成诵的人。提到一个基本的名词或话题能够将其来龙去脉解释清楚的人。<br/>
    2、 我在简历当中最打动面试官的地方恰恰是我利用课余时间及逃课所写的程序，还有利用背考试题的时间所读的课外书。<br/>
    3、 要想成为优秀的程序员，对于基本算法有深入与精确的理解应该是一项必须的基本技能。<br/>
    4、 Your time is limited，so don’t waste it living in someone else’s life. Don’t be trapped by dogma which is living with the results of other people’s thinking. Don’t let the noise of other’s opinions drown out you own inner voice. And the most important, have the courage to your heart and intuition. They somehow already know what you truly want to become. Everything else is secondary.（乔帮主）<br/>
@@ -863,44 +638,15 @@ Dload  Upload   Total   Spent    Left  Speed
    32、多看书，看好书，并且一定要做笔记。<br/>
    33、 在我看来，成长路径上有很多的偶然，没人知道在一些关键时候需要什么样的知识储备，所以踏实地多储备一些是好事。以前通过看书、自学，彻底地弄懂的一样知识，会在某个不经意的时候，突然被用到。这时候对当年积累的庆幸和再发现的快乐，就像蓦然回首见到灯火阑珊处的秋水伊人一样，是没法用文字描绘的。——非常赞同！<br/>
    34、一本好书读两次要胜过两本好书各读一次。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/31/tair/">Tair</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-31T15:02:00+08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
-        
-         | <a href="/blog/2013/01/31/tair/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>什么是tair</h2>
+  <entry>
+    <title type="html"><![CDATA[tair]]></title>
+    <link href="http://www.ilehao.com/blog/2013/01/31/tair/"/>
+    <updated>2013-01-31T15:02:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2013/01/31/tair</id>
+    <content type="html"><![CDATA[<h2>什么是tair</h2>
 
 <p>&nbsp;&nbsp;&nbsp;&nbsp;Tair是一个高性能，分布式，可扩展，高可靠的key/value结构存储系统。
 Tair提供两种存储方式：
@@ -935,44 +681,15 @@ Tair持久化适用的场景
 单个数据大小不是很大，一般在KB级别</p>
 
 <h2>tair结构</h2>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/31/rtb/">广告交易平台</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-31T14:41:00+08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
-        
-         | <a href="/blog/2013/01/31/rtb/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>先给大家解释下名词</p>
+  <entry>
+    <title type="html"><![CDATA[广告交易平台]]></title>
+    <link href="http://www.ilehao.com/blog/2013/01/31/rtb/"/>
+    <updated>2013-01-31T14:41:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2013/01/31/rtb</id>
+    <content type="html"><![CDATA[<p>先给大家解释下名词</p>
 
 <blockquote><p>RTB: (Real Time Bidding)中文名为实时竞价，是一种利用第三方技术在数以百万计的网站上针对每一个用户展示行为进行评估以及出价的竞价技术</p>
 
@@ -995,85 +712,27 @@ Tair持久化适用的场景
 <p>结构图：</p>
 
 <p><img src="../images/blogImgs/rtb.jpg" alt="Alt text" /></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/30/revert-eclipse-delete-file/">如何恢复Eclipse中删除的文件</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-30T09:03:00+08:00" pubdate data-updated="true">Jan 30<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/01/30/revert-eclipse-delete-file/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>其实很简单：选择工程 -&gt; 右键 -&gt; Restore from Local History
+  <entry>
+    <title type="html"><![CDATA[如何恢复Eclipse中删除的文件]]></title>
+    <link href="http://www.ilehao.com/blog/2013/01/30/revert-eclipse-delete-file/"/>
+    <updated>2013-01-30T09:03:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2013/01/30/revert-eclipse-delete-file</id>
+    <content type="html"><![CDATA[<pre><code>其实很简单：选择工程 -&gt; 右键 -&gt; Restore from Local History
 </code></pre>
 
 <p>搞定，简单吧！</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/11/statistics-data/">统计cooklog每分钟及每30分钟的数据</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-11T14:48:00+08:00" pubdate data-updated="true">Dec 11<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/12/11/statistics-data/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>统计Cookie_log_total_1和Cookie_log_total_2两个文件，每分钟访问量及每30分钟的访问量</p>
+  <entry>
+    <title type="html"><![CDATA[统计cooklog每分钟及每30分钟的数据]]></title>
+    <link href="http://www.ilehao.com/blog/2012/12/11/statistics-data/"/>
+    <updated>2012-12-11T14:48:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/12/11/statistics-data</id>
+    <content type="html"><![CDATA[<p>统计Cookie_log_total_1和Cookie_log_total_2两个文件，每分钟访问量及每30分钟的访问量</p>
 
 <p>统计每分钟的数据</p>
 
@@ -1093,124 +752,500 @@ Cookie_log_total_1的内容如下，其它的类推：</p>
 46.72.70.123 - - - [12/Sep/2012:23:59:59 -0700] "GET test" 200 2131 82269 "http://www.a13/ Sep /2012:00:01 
 46.72.70.123 - - - [13/ Sep /2012:00:01:50 -0700] "GET test
 </code></pre>
-</div>
+]]></content>
+  </entry>
   
+  <entry>
+    <title type="html"><![CDATA[github blog 搭建手册]]></title>
+    <link href="http://www.ilehao.com/blog/2012/11/11/github-blog-config/"/>
+    <updated>2012-11-11T21:07:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/11/11/github-blog-config</id>
+    <content type="html"><![CDATA[<p>很多人都希望拥有一个属于自己的免费blog空间。</p>
+
+<p>之前也会在一些技术论坛写blog，但是总觉得那是不属于自己的网站。</p>
+
+<p>现在github给我们一个机会，可以搭建自己的独立博客。</p>
+
+<p>在github上搭建博客可以利用Jekyll或者Octopress, Octopress是在Jekyll上建立起来的，即使没有网站设计经验的人也能够快速搭建自己的博客。</p>
+
+<p>Jekyll和Octopress都是利用Ruby实现的，因此在搭建自己博客的过程中难免要接触到一些Ruby的东西。当然，这也许可以让你开始对Ruby感兴趣，并深入学习之。</p>
+
+<p>现在来简单介绍下Window下搭建blog实施步骤：</p>
+
+<p>*在www.github.com网站上注册一个帐户，并创建你blog站点的repository [username.github.com].</p>
+
+<p>*下载git，安装完成后就可以在本地使用git了,然后在本机使用git创建SSH Key。</p>
+
+<pre><code>ssh-keygen -C "useremail" -t rsa
+</code></pre>
+
+<p>备注: useremail为你注册github用户时的邮箱地址
+这时，在系统目录下就会生成一个.ssh文件夹，里面为对应的SSH Key，其中id_rsa.pub是Gighub需要的SSH公钥文件。
+将id_ras.pub文件里内容拷贝到Github的Account Settings里的key中。
+这样你就可以直接使用Git和Github了.</p>
+
+<p>*安装Ruby环境
+** 下载RubyInstaller和DevKit,并安装，然后进行到DevKit目录下，运行以下命令</p>
+
+<pre><code>ruby dk.rb init
+ruby dk.rb install
+gem install rdiscount --platform=ruby
+</code></pre>
+
+<p>安装成功后，就可以使用一些Ruby的小工具了。</p>
+
+<p>*安装OctoPress
+通过Git从Github上克隆一份Octopress</p>
+
+<pre><code>git clone git://github.com/imathis/octopress.git octopress
+</code></pre>
+
+<p>安装一些依赖的工具</p>
+
+<pre><code>cd octopress
+gem install bundler
+bundle install
+</code></pre>
+
+<p>安装Octopress默认的Theme</p>
+
+<pre><code>rake install
+</code></pre>
+
+<p>通过_config.yml来配置博客</p>
+
+<p>创建一个博客 <code>rake new_post["title"]</code>
+创建一个博客目录 <code>rake new_page["page"]</code>
+预览效果：</p>
+
+<pre><code>rake generate
+rake preview
+</code></pre>
+
+<p>然后在浏览器中打开<a href="http://localhost:4000%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%95%88%E6%9E%9C%E4%BA%86%E3%80%82">http://localhost:4000%EF%BC%8C%E5%B0%B1%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0%E6%95%88%E6%9E%9C%E4%BA%86%E3%80%82</a></p>
+
+<p>*将博客部署到Github上
+通过<code>rake setup_github_pages</code>命令，将自己的Blog与你在Github创建的repository关联起来。在过程中根据提示输入username.github.com
+然后再通过下面命令来把博客内容部署到Github上</p>
+
+<pre><code>rake deploy
+git status ##查看更新状态
+git add . ##把当前目录上所有的变更加上
+git commit -a -m 'commit'
+git push origin source
+</code></pre>
+
+<ul>
+<li>在浏览器中输入username.github.com就可以看到你的博客内容了</li>
+</ul>
+
+
+<p>** 常见问题
+乱码，请设置<code>LC_ALL=zh_CN.UTF-8和LANG=zh_CN.UTF-8</code></p>
+]]></content>
+  </entry>
   
+  <entry>
+    <title type="html"><![CDATA[python 学习笔记一]]></title>
+    <link href="http://www.ilehao.com/blog/2012/11/04/python-study-note-1/"/>
+    <updated>2012-11-04T22:15:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/11/04/python-study-note-1</id>
+    <content type="html"><![CDATA[<p>之前很粗的学习了下python，没有什么总结，只是写了几个简单的case。
+现在总结下常用的一些命令吧。</p>
 
+<p>pythons的setuptools安装</p>
 
-    </article>
+<pre><code>wget http://pypi.python.org/packages/source/d/distribute/distribute-0.6.30.tar.gz
+tar -xzvf ./distribute-0.6.30.tar.gz 
+cd distribute-0.6.30/
+python3 ./setup.py install
+</code></pre>
+
+<p>查看setup的命令：</p>
+
+<pre><code>python setup.py --help-commands
+</code></pre>
+
+<p>查看BIF
+在IDLE shell中，键入</p>
+
+<pre><code>dir(__builtins__)
+</code></pre>
+
+<p>alt+p 上一个命令 alt+n 下一个命令
+构建发布
+先创建一个setup.py文件</p>
+
+<pre><code>from setuptools import setup
+setup(name='',version='',author='')
+</code></pre>
+
+<p>然后执行以下命令</p>
+
+<pre><code>python setup.py sdist
+python setup.py install
+</code></pre>
+
+<p>发布到pypi上</p>
+
+<pre><code>python setup.py register
+python setup.py sdist upload
+</code></pre>
+]]></content>
+  </entry>
   
-  <div class="pagination">
-    
-      <a class="prev" href="/blog/page/2/">&larr; Older</a>
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
+  <entry>
+    <title type="html"><![CDATA[深入理解Javn 虚拟机 学习笔记一]]></title>
+    <link href="http://www.ilehao.com/blog/2012/10/28/jvm-study-note1/"/>
+    <updated>2012-10-28T20:01:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/10/28/jvm-study-note1</id>
+    <content type="html"><![CDATA[<p>运行时数据区包含：方法区(method area)、虚拟机栈(VM Stack)、本地方法栈(Native Method Stack)、堆(Heap)、程序计数器(Program Counter Register)</p>
+
+<p>各种区出现Error的情况：</p>
+
+<h1>虚拟机栈</h1>
+
+<ul>
+<li>如果线程请求的栈深度大小虚拟机所允许的深度，将抛出StackOverflowError异常</li>
+<li>如果虚拟机栈可以动态扩展(当前大部分的Java虚拟机都可以动态扩展，只不过虚拟机规范中也允许固定长度的虚拟机栈)，当扩展时无法申请到足够的内存时会抛出OouOfMemoryError异常
+
+<h1>本地方法栈</h1></li>
+<li>因为有的虚拟机(例如 Sun HotSpot)直接是把本地方法栈和虚拟机栈合二为一，所以与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError和OutOfMemoryError异常
+
+<h1>Java 堆</h1></li>
+<li>如果堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常
+
+<h1>方法区</h1></li>
+<li>如果方法区无法满足内存分配需求时，将抛出OutOfMemoryError异常
+
+<h1>运行时常量池(Runtime Constant Pool)</h1></li>
+<li>由于运行时常量池也是方法区的一部分，所以也会受到方法区内存的限制，当常量池无法再申请到内存时会抛出OutOfMemoryError异常
+
+<h1>直接内存</h1></li>
+<li>如果服务器管理员配置虚拟机参数时，只考虑实际内存设置 -Xmx等参数信息，而忽略掉了直接内存，使得各个内存区域的总和大于物理内存限制(包括物理上的和操作系统级的限制)，从而会导致动态扩展时出现OutOfMemoryError异常</li>
+</ul>
+
+]]></content>
+  </entry>
   
-    <section>
-  <h1>About Me</h1>
-  <p><img src="/images/blogImgs/self.jpg"></p>
-  <p>java程序员，老猿人，孩子他爸</p>
-  <p>爱篮球，爱Google, 爱折腾</p>
-  <p>喜欢开源的东西, 喜欢读书和思考</p>
-  <p><img src="/images/email.png"  alt="milehao@gmail.com" /></p>
-</section>
-<section>
-  <h1>Sina 微博</h1>
-<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=3&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=2235818362&verifier=f873c807&dpc=1"></iframe>
-</section><section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2014/02/21/git-blog-r-and-q/">git blog R&amp;Q</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/20/zhaopin/">alibaba招聘</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/30/spring/">spring</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/30/java-se-8-lambda/">Java SE 8: Lambda 表达式</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/29/curl-command/">curl command</a>
-      </li>
-    
-  </ul>
-</section>
-<section>
-  <h1>Tag Cloud</h1>
-    <span id="tag-cloud"></span>
-</section><section>
-  <ul id="categories">
-    
-  </ul>
-</section><section>
-  <h1>最新评论</h1>
-  <script type="text/javascript" src="http://lehao.disqus.com/recent_comments_widget.js?num_items=5&hide_avatars=0&avatar_size=32&excerpt_length=200"></script>
-</section><section>
-<h1>My Douban</h1>
-<div>
-<script type="text/javascript" src="http://www.douban.com/service/badge/ilehao/?show=wishlist&n=9&columns=3&hidelogo=yes&cat=movie|book" ></script>
-</div>
-</section>
+  <entry>
+    <title type="html"><![CDATA[如果解析超大XML文件]]></title>
+    <link href="http://www.ilehao.com/blog/2012/10/28/parse-big-xml-file/"/>
+    <updated>2012-10-28T11:26:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/10/28/parse-big-xml-file</id>
+    <content type="html"><![CDATA[<p>最近工作中碰到需要解析超大XML的问题（XML文件超过1G），并且在处理中还碰到无法解析的异常(org.xml.sax.SAXParseException: An invalid XML character (Unicode: 0x19) was found in the element content of the document)。
+现在把处理方式和代码分享出来。
+Java代码</p>
 
+<pre><code>try {  
+       SAXReader saxReader = new SAXReader();  
+       saxReader.addHandler("/list/XXXX", new ElementHandler() {  
+           public void onStart(ElementPath path) {  
+                         // do nothing here...  
+            }  
 
+            public void onEnd(ElementPath path) {  
+         // process a ROW element  
+        Element row = path.getCurrent();  
+        Document document = row.getDocument();  
+        System.out.println(document.asXML());  
+        row.detach();  
+                    }  
+                   });  
+        }  
+
+        final File file = new File(getFileName(language, isProduct));  
+        saxReader.setErrorHandler(new ErrorHandler() {  
+        public void error(SAXParseException e) {  
+        System.out.println("file:" + file.getName() + "  ERROR: " + e);  
+        }  
+        public void fatalError(SAXParseException e) {  
+        System.out.println("file:" + file.getName() + "  FATAL: " + e);  
+        }  
+        public void warning(SAXParseException e) {  
+         System.out.println("file:" + file.getName() + "  WARNING: " + e);  
+        }  
+        });  
+
+        InputStreamReader source = new InputStreamReader(new FileInputStream(file));  
+        saxReader.read(source);  
+    } catch (DocumentException e) {  
+        logger.error("error", e);  
+        return;  
+    } catch (FileNotFoundException e) {  
+        logger.error(" error", e);  
+        return;  
+}  
+</code></pre>
+
+<p>如果XML文件中包含了一些不可见的无效字符，就会导致JDom在解析该文件是抛出异常(An invalid XML character Unicode: 0x19 etc)。我们可以通过一些xml工具来保证，如果在xml文件出现了，也可以通过下面这个方法来过滤。
+Java代码</p>
+
+<pre><code>public static String stripNonValidXMLCharacters(String in) {  
+    StringBuffer out = new StringBuffer(); // Used to hold the output.  
+    char current; // Used to reference the current character.  
+
+    if (in == null || ("".equals(in)))  
+    return ""; // vacancy test.  
+    for (int i = 0; i &lt; in.length(); i++) {  
+    current = in.charAt(i); // NOTE: No IndexOutOfBoundsException caught  
+                // here; it should not happen.  
+    if ((current == 0x9) || (current == 0xA) || (current == 0xD)  
+        || ((current &gt;= 0x20) &amp;&amp; (current &lt;= 0xD7FF))  
+        || ((current &gt;= 0xE000) &amp;&amp; (current &lt;= 0xFFFD))  
+        || ((current &gt;= 0x10000) &amp;&amp; (current &lt;= 0x10FFFF)))  
+        out.append(current);  
+    }  
+    return out.toString();  
+}  
+</code></pre>
+]]></content>
+  </entry>
   
-</aside>
+  <entry>
+    <title type="html"><![CDATA[vim 失效的解决办法]]></title>
+    <link href="http://www.ilehao.com/blog/2012/10/28/vim-invalid/"/>
+    <updated>2012-10-28T11:25:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/10/28/vim-invalid</id>
+    <content type="html"><![CDATA[<p>解决办法：</p>
 
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - 乐皓 -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-  <script src="http://s21.cnzz.com/stat.php?id=4841109&web_id=4841109&show=pic" language="JavaScript"></script>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<p>  修改 /etc/vim/vim.tiny , 将</p>
 
-  ga('create', 'UA-43609148-1', 'ilehao.com');
-  ga('send', 'pageview');
+<ol>
+<li><p>  set compatible 改成 set nocompatible</p></li>
+<li><p>  添加 backspace=2</p></li>
+</ol>
 
-</script>
-</p>
-
-</footer>
+]]></content>
+  </entry>
   
+  <entry>
+    <title type="html"><![CDATA[快速获取svn的最初分支版本号]]></title>
+    <link href="http://www.ilehao.com/blog/2012/10/28/svn-version/"/>
+    <updated>2012-10-28T11:25:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/10/28/svn-version</id>
+    <content type="html"><![CDATA[<p>在做code review时，我们经常要通过svn去找到分支的最初版本号，然后通过svn di命令进行比较。
+这里写了个简单的脚本去获取svn的最初版本号
+<code> svn log -v --stop-on-copy | grep -B4 "svn copy" | head -1 | awk '{print substr($1,2)}' </code>
+所以如果你想对一个分支进行review时，就相当简单了。
+定义一个shell脚本，我们暂定为review吧。</p>
 
-<script type="text/javascript">
-      var disqus_shortname = 'lehao';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+<pre><code>VERSION=`svn log -v --stop-on-copy $1 | grep -B4 "svn copy" | head -1 | awk '{print substr($1,2)}' 
+svn di -r ${VERSION}:head $1  
+</code></pre>
+
+<p>使用方法：
+1、把review脚本放到的bin（建议放在/usr/local/bin）目录下，这样你就可以在任何地方使用了。
+2、在review脚本后面加上你的svn分支就可以查看修改记录了。例如： review <a href="http://svn.../branches/20120715_155147_1">http://svn&#8230;/branches/20120715_155147_1</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 配置Apache2+PHP+MySQL]]></title>
+    <link href="http://www.ilehao.com/blog/2012/10/28/ubuntu-apache-php-mysql/"/>
+    <updated>2012-10-28T11:24:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/10/28/ubuntu-apache-php-mysql</id>
+    <content type="html"><![CDATA[<p>1.安装apache2.0
+<code>sudo apt-get install apache2  </code></p>
+
+<p>当然你也可以用编译的方式安装apache2
+apache：下载地址：<a href="http://httpd.apache.org/download.cgi#apache22">http://httpd.apache.org/download.cgi#apache22</a>
+编译前准备:
+<code>sudo apt-get install build-essential，</code>
+不然会出现 checking for C compiler default output file name&hellip; configure: error: C compiler cannot create executables
+sudo apt-get install zlib1g-dev
+不然 会出现 checking for zlib location&hellip; not found
+checking whether to enable mod_deflate&hellip; configure: error: mod_deflate has been requested but can not be built due to prerequisite failures
+然后从官网上下载apache2，然后解压（tar -xzvf）编译 (configure / make / make install)
+*.config, make and make install:</p>
+
+<pre><code>sudo ./configure --prefi=/usr/soft/apache2 --enable-rewrite=static --with-mpm=worker --enable-so --enable-proxy --enable-proxy-http --enable-deflate --enable-headers --enable-expires --with-included-apr 
+make 
+make install 
+</code></pre>
+
+<p>安装后在浏览器中打开：
+<a href="http://localhost/">http://localhost/</a>
+或者<a href="http://127.0.0.1">http://127.0.0.1</a>
+如果出现It works!那证明OK了</p>
+
+<p>2.安装PHP</p>
+
+<p>依次在终端打开：</p>
+
+<pre><code>sudo apt-get install php5 //安装PHP5  
+sudo apt-get install libapache2-mod-php5 //配置APACHE+PHP  
+sudo /etc/init.d/apache2 restart //重启APACHE  
+</code></pre>
+
+<p>测试：
+打开
+ <code>sudo  vi /var/www/testphp.php </code></p>
+
+<p>然后随意输入点东西（我输入的是test）再保存。
+然后在浏览器中输入<a href="http://127.0.0.1/testphp.php%E6%88%96%E8%80%85http://localhost/testphp.php">http://127.0.0.1/testphp.php%E6%88%96%E8%80%85http://localhost/testphp.php</a>
+如果显示出你输入的东西即为成功</p>
+
+<p>3.安装MYSQL
+<code> sudo apt-get install mysql-server </code></p>
+
+<p>安装完成按提示设置root密码</p>
+
+<p>4、让apache、php支持 mysql</p>
+
+<pre><code>sudo apt-get install libapache2-mod-auth-mysql  
+sudo apt-get install php5-mysql  
+sudo /etc/init.d/apache2 restart  
+</code></pre>
+
+<p>至此apache2+php+mysql的环境就完成了。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[批量替换文件中的字符串]]></title>
+    <link href="http://www.ilehao.com/blog/2012/10/28/batch-quickly-replace-string/"/>
+    <updated>2012-10-28T11:24:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/10/28/batch-quickly-replace-string</id>
+    <content type="html"><![CDATA[<p>批量替换文件中的字符串：
+你可以先查询下看你要替换的字符串是否会包含在一些别的词中，避免代替其它的词的意思。
+<code>find ./ -name "*.vm" | xargs grep "content" </code></p>
+
+<p>确认这个内容都是你要代替的时候，再执行以下这行命令就可以了
+<code>find ./ -name "*.vm" | xargs sed -i "s/content/replacecontent/g" </code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[如何通过vi快速代替文章的指定字符]]></title>
+    <link href="http://www.ilehao.com/blog/2012/10/28/vi-quickly-replace-string/"/>
+    <updated>2012-10-28T11:23:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/10/28/vi-quickly-replace-string</id>
+    <content type="html"><![CDATA[<ol>
+<li><p>基本的替换
+:s/vivian/sky/ 替换当前行第一个 vivian 为 sky
+:s/vivian/sky/g 替换当前行所有 vivian 为 sky
+:n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
+:n,$s/vivian/sky/g 替换第 n 行开始到最后一行中每一行所有 vivian 为 sky
+（n 为数字，若 n 为 .，表示从当前行开始到最后一行）
+:%s/vivian/sky/（等同于 :g/vivian/s//sky/） 替换每一行的第一个 vivian 为 sky
+:%s/vivian/sky/g（等同于 :g/vivian/s//sky/g） 替换每一行中所有 vivian 为 sky</p></li>
+<li><p>可以使用 # 作为分隔符，此时中间出现的 / 不会作为分隔符
+:s#vivian/#sky/# 替换当前行第一个 vivian/ 为 sky/
+:%s+/oradata/apras/+/user01/apras1+ （使用+ 来 替换 / ）： /oradata/apras/替换成/user01/apras1/</p></li>
+<li><p>删除文本中的<sup>M</sup>
+问题描述：对于换行，window下用回车换行（0A0D）来表示，linux下是回车（0A）来表示。这样，将window上的文件拷到unix上用时，总会有个<sup>M</sup>，请写个用在unix下的过滤windows文件的换行符（0D）的shell或c程序。</p></li>
+</ol>
 
 
+<p>使用命令：cat filename1 | tr -d “<sup>V</sup><sup>M</sup>” > newfile;
+使用命令：sed -e “s/^V<sup>M</sup>//” filename > outputfilename</p>
+
+<p>需要注意的是在1、2两种方法中，<sup>V</sup>和<sup>M</sup>指的是Ctrl+V和Ctrl+M。你必须要手工进行输入，而不是粘贴。</p>
+
+<p>在vi中处理：首先使用vi打开文件，然后按ESC键，接着输入命令：
+:%s/^V<sup>M</sup>//
+:%s/^M$//g</p>
+
+<p>如果上述方法无用，则正确的解决办法是：
+tr -d “\r” &lt; src >dest
+tr -d “\015〃 dest
+strings A>B</p>
+
+<ol>
+<li>其它用法
+利用 :s 命令可以实现字符串的替换。具体的用法包括：
+:s/str1/str2/ 用字符串 str2 替换行中首次出现的字符串 str1
+:s/str1/str2/g 用字符串 str2 替换行中所有出现的字符串 str1
+:.,$ s/str1/str2/g 用字符串 str2 替换正文当前行到末尾所有出现的字符串 str1
+:1,$ s/str1/str2/g 用字符串 str2 替换正文中所有出现的字符串 str1
+:g/str1/s//str2/g 功能同上</li>
+</ol>
 
 
+<p>从上述替换命令可以看到：g 放在命令末尾，表示对搜索字符串的每次出现进行替换；不加 g，表示只对搜索字符串的首次出现进行替换；g 放在命令开头，表示对正文中所有包含搜索字符串的行进行替换操作。</p>
 
+<p>代替前面几个字符：%s/^&hellip;//g 一个小点代表一个字符
+代替后面几个字符：%s/&hellip;$//g 一个小点代表一个字符</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java代码编写的30条建议]]></title>
+    <link href="http://www.ilehao.com/blog/2012/10/28/java-code-30-items-suggest/"/>
+    <updated>2012-10-28T11:22:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2012/10/28/java-code-30-items-suggest</id>
+    <content type="html"><![CDATA[<p>(1) 类名首字母应该大写。字段、方法以及对象（句柄）的首字母应小写。对于所有标识符，其中包含的所有单词都应紧靠在一起，而且大写中间单词的首字母。例如：
+ThisIsAClassNamethisIsMethodOrFieldName
+若在定义中出现了常数初始化字符，则大写static final基本类型标识符中的所有字母。这样便可标志出它们属于编译期的常数。
+Java包（Package）属于一种特殊情况：它们全都是小写字母，即便中间的单词亦是如此。对于域名扩展名称，如com，org，net或者edu等，全部都应小写（这也是Java 1.1和Java 1.2的区别之一）。</p>
 
+<p>(2) 为了常规用途而创建一个类时，请采取&#8221;经典形式&#8221;，并包含对下述元素的定义：
+equals()<br/>
+hashCode()<br/>
+toString()<br/>
+clone()（implement Cloneable）<br/>
+implement Serializable</p>
 
+<p>(3) 对于自己创建的每一个类，都考虑置入一个main()，其中包含了用于测试那个类的代码。为使用一个项目中的类，我们没必要删除测试代码。若进行了任何形式的改动，可方便地返回测试。这些代码也可作为如何使用类的一个示例使用。</p>
 
+<p>(4) 应将方法设计成简要的、功能性单元，用它描述和实现一个不连续的类接口部分。理想情况下，方法应简明扼要。若长度很大，可考虑通过某种方式将其分割成较短的几个方法。这样做也便于类内代码的重复使用（有些时候，方法必须非常大，但它们仍应只做同样的一件事情）。</p>
 
+<p>(5) 设计一个类时，请设身处地为客户程序员考虑一下（类的使用方法应该是非常明确的）。然后，再设身处地为管理代码的人考虑一下（预计有可能进行哪些形式的修改，想想用什么方法可把它们变得更简单）。</p>
 
+<p>(6) 使类尽可能短小精悍，而且只解决一个特定的问题。下面是对类设计的一些建议： <br/>
+◆  一个复杂的开关语句：考虑采用&#8221;多形&#8221;机制<br/>
+◆ 数量众多的方法涉及到类型差别极大的操作：考虑用几个类来分别实现 <br/>
+◆ 许多成员变量在特征上有很大的差别：考虑使用几个类</p>
 
-</body>
-</html>
+<p>(7) 让一切东西都尽可能地&#8221;私有&#8221;&mdash;private。可使库的某一部分&#8221;公共化&#8221;（一个方法、类或者一个字段等等），就永远不能把它拿出。若强行拿出，就可能破坏其他人现有的代码，使他们不得不重新编写和设计。若只公布自己必须公布的，就可放心大胆地改变其他任何东西。在多线程环境中，隐私是特别重要的一个因素&mdash;只有private字段才能在非同步使用的情况下受到保护。</p>
+
+<p>(8) 谨惕&#8221;巨大对象综合症&#8221;。对一些习惯于顺序编程思维、且初涉OOP领域的新手，往往喜欢先写一个顺序执行的程序，再把它嵌入一个或两个巨大的对象里。根据编程原理，对象表达的应该是应用程序的概念，而非应用程序本身。</p>
+
+<p>(9) 若不得已进行一些不太雅观的编程，至少应该把那些代码置于一个类的内部。</p>
+
+<p>(10) 任何时候只要发现类与类之间结合得非常紧密，就需要考虑是否采用内部类，从而改善编码及维护工作（参见第14章14.1.2小节的&#8221;用内部类改进代码&#8221;）。</p>
+
+<p>(11) 尽可能细致地加上注释，并用javadoc注释文档语法生成自己的程序文档。</p>
+
+<p>(12) 避免使用&#8221;魔术数字&#8221;，这些数字很难与代码很好地配合。如以后需要修改它，无疑会成为一场噩梦，因为根本不知道&#8221;100&#8221;到底是指&#8221;数组大小&#8221;还是&#8221;其他全然不同的东西&#8221;。所以，我们应创建一个常数，并为其使用具有说服力的描述性名称，并在整个程序中都采用常数标识符。这样可使程序更易理解以及更易维护。</p>
+
+<p>(13) 涉及构建器和异常的时候，通常希望重新丢弃在构建器中捕获的任何异常&mdash;如果它造成了那个对象的创建失败。这样一来，调用者就不会以为那个对象已正确地创建，从而盲目地继续。</p>
+
+<p>(14) 当客户程序员用完对象以后，若你的类要求进行任何清除工作，可考虑将清除代码置于一个良好定义的方法里，采用类似于cleanup()这样的名字，明确表明自己的用途。除此以外，可在类内放置一个boolean（布尔）标记，指出对象是否已被清除。在类的finalize()方法里，请确定对象已被清除，并已丢弃了从RuntimeException继承的一个类（如果还没有的话），从而指出一个编程错误。在采取象这样的方案之前，请确定finalize()能够在自己的系统中工作（可能需要调用System.runFinalizersOnExit(true)，从而确保这一行为）。</p>
+
+<p>(15) 在一个特定的作用域内，若一个对象必须清除（非由垃圾收集机制处理），请采用下述方法：初始化对象；若成功，则立即进入一个含有finally从句的try块，开始清除工作。</p>
+
+<p>(16) 若在初始化过程中需要覆盖（取消）finalize()，请记住调用super.finalize()（若Object属于我们的直接超类，则无此必要）。在对finalize()进行覆盖的过程中，对super.finalize()的调用应属于最后一个行动，而不应是第一个行动，这样可确保在需要基础类组件的时候它们依然有效。</p>
+
+<p>(17) 创建大小固定的对象集合时，请将它们传输至一个数组（若准备从一个方法里返回这个集合，更应如此操作）。这样一来，我们就可享受到数组在编译期进行类型检查的好处。此外，为使用它们，数组的接收者也许并不需要将对象&#8221;造型&#8221;到数组里。</p>
+
+<p>(18) 尽量使用interfaces，不要使用abstract类。若已知某样东西准备成为一个基础类，那么第一个选择应是将其变成一个interface（接口）。只有在不得不使用方法定义或者成员变量的时候，才需要将其变成一个abstract（抽象）类。接口主要描述了客户希望做什么事情，而一个类则致力于（或允许）具体的实施细节。</p>
+
+<p>(19) 在构建器内部，只进行那些将对象设为正确状态所需的工作。尽可能地避免调用其他方法，因为那些方法可能被其他人覆盖或取消，从而在构建过程中产生不可预知的结果（参见第7章的详细说明）。</p>
+
+<p>(20) 对象不应只是简单地容纳一些数据；它们的行为也应得到良好的定义。</p>
+
+<p>(21) 在现成类的基础上创建新类时，请首先选择&#8221;新建&#8221;或&#8221;创作&#8221;。只有自己的设计要求必须继承时，才应考虑这方面的问题。若在本来允许新建的场合使用了继承，则整个设计会变得没有必要地复杂。</p>
+
+<p>(22) 用继承及方法覆盖来表示行为间的差异，而用字段表示状态间的区别。一个非常极端的例子是通过对不同类的继承来表示颜色，这是绝对应该避免的：应直接使用一个&#8221;颜色&#8221;字段。</p>
+
+<p>(23) 为避免编程时遇到麻烦，请保证在自己类路径指到的任何地方，每个名字都仅对应一个类。否则，编译器可能先找到同名的另一个类，并报告出错消息。若怀疑自己碰到了类路径问题，请试试在类路径的每一个起点，搜索一下同名的.class文件。</p>
+
+<p>(24) 在Java 1.1 AWT中使用事件&#8221;适配器&#8221;时，特别容易碰到一个陷阱。若覆盖了某个适配器方法，同时拼写方法没有特别讲究，最后的结果就是新添加一个方法，而不是覆盖现成方法。然而，由于这样做是完全合法的，所以不会从编译器或运行期系统获得任何出错提示&mdash;只不过代码的工作就变得不正常了。</p>
+
+<p>(25) 用合理的设计方案消除&#8221;伪功能&#8221;。也就是说，假若只需要创建类的一个对象，就不要提前限制自己使用应用程序，并加上一条&#8221;只生成其中一个&#8221;注释。请考虑将其封装成一个&#8221;独生子&#8221;的形式。若在主程序里有大量散乱的代码，用于创建自己的对象，请考虑采纳一种创造性的方案，将些代码封装起来。</p>
+
+<p>(26) 警惕&#8221;分析瘫痪&#8221;。请记住，无论如何都要提前了解整个项目的状况，再去考察其中的细节。由于把握了全局，可快速认识自己未知的一些因素，防止在考察细节的时候陷入&#8221;死逻辑&#8221;中。</p>
+
+<p>(27) 警惕&#8221;过早优化&#8221;。首先让它运行起来，再考虑变得更快&mdash;但只有在自己必须这样做、而且经证实在某部分代码中的确存在一个性能瓶颈的时候，才应进行优化。除非用专门的工具分析瓶颈，否则很有可能是在浪费自己的时间。性能提升的隐含代价是自己的代码变得难于理解，而且难于维护。</p>
+
+<p>(28) 请记住，阅读代码的时间比写代码的时间多得多。思路清晰的设计可获得易于理解的程序，但注释、细致的解释以及一些示例往往具有不可估量的价值。无论对你自己，还是对后来的人，它们都是相当重要的。如对此仍有怀疑，那么请试想自己试图从联机Java文档里找出有用信息时碰到的挫折，这样或许能将你说服。</p>
+
+<p>(29) 如认为自己已进行了良好的分析、设计或者实施，那么请稍微更换一下思维角度。试试邀请一些外来人士&mdash;并不一定是专家，但可以是来自本公司其他部门的人。请他们用完全新鲜的眼光考察你的工作，看看是否能找出你一度熟视无睹的问题。采取这种方式，往往能在最适合修改的阶段找出一些关键性的问题，避免产品发行后再解决问题而造成的金钱及精力方面的损失。</p>
+
+<p>(30) 良好的设计能带来最大的回报。简言之，对于一个特定的问题，通常会花较长的时间才能找到一种最恰当的解决方案。但一旦找到了正确的方法，以后的工作就轻松多了，再也不用经历数小时、数天或者数月的痛苦挣扎。我们的努力工作会带来最大的回报（甚至无可估量）。而且由于自己倾注了大量心血，最终获得一个出色的设计方案，成功的快感也是令人心动的。坚持抵制草草完工的诱惑&mdash;那样做往往得不偿失。</p>
+]]></content>
+  </entry>
+  
+</feed>
