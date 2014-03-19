@@ -9,7 +9,7 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="分析日志 1.分析日志文件下 2014-03-17 访问页面最高 的前20个 URL 并排序 cat cookie_log |grep '17/Mar/2014'| awk '{print $12}'|sort|uniq -c|sort -nr|head -20 获取访问最高的10个IP地址 &hellip;">
+  <meta name="description" content="分析日志 1.分析日志文件下 2014-03-17 访问页面最高 的前20个 URL 并排序 cat cookie_log |grep '17/Mar/2014'| awk '{print $12}'|sort|uniq -c|sort -nr|head -20 2.获取访问最高的10个IP地址 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -103,39 +103,77 @@
 <pre><code>cat cookie_log |grep '17/Mar/2014'| awk '{print $12}'|sort|uniq -c|sort -nr|head -20   
 </code></pre>
 
-<ol>
-<li>获取访问最高的10个IP地址  同时也可以按时间来查询
- cat cookie_log|awk &lsquo;{print $1}&rsquo;|sort|uniq -c|sort -nr|head -10  <br/>
-3.列出传输最大的几个exe文件（分析下载站的时候常用） <br/>
- cat cookie_log |awk &lsquo;($7~/.exe/){print $10 &ldquo; &rdquo; $1 &ldquo; &rdquo; $4 &ldquo; &rdquo; $7}&rsquo;|sort -nr|head -20  <br/>
-4.列出输出大于200000byte(约200kb)的exe文件以及对应文件发生次数
- cat cookie_log |awk &lsquo;($10 > 200000 &amp;&amp; $7~/.exe/){print $7}&rsquo;|sort -n|uniq -c|sort -nr|head -100  <br/>
-5.如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面
- cat cookie_log |awk &lsquo;($7~/.php/){print $NF &ldquo; &rdquo; $1 &ldquo; &rdquo; $4 &ldquo; &rdquo; $7}&rsquo;|sort -nr|head -100  <br/>
-6.列出最最耗时的页面(超过60秒的)的以及对应页面发生次数
- cat cookie_log |awk &lsquo;($NF > 60 &amp;&amp; $7~/.html/){print $7}&rsquo;|sort -n|uniq -c|sort -nr|head -100 <br/>
-7.列出传输时间超过 30 秒的文件
- cat cookie_log |awk &lsquo;($NF > 30){print $7}&rsquo;|sort -n|uniq -c|sort -nr|head -20 <br/>
-8.统计网站流量（G)
- cat cookie_log |awk &lsquo;{sum+=$10} END {print sum/1024/1024/1024}&rsquo; <br/>
-9.统计404的连接 <br/>
- awk &lsquo;($10 ~/404/)&rsquo; cookie_log | awk &lsquo;{print $10,$13}&rsquo; | sort</li>
-<li>统计http status.<br/>
-cat cookie_log |awk &lsquo;{counts[$(10)]+=1}; END {for(code in counts) print code, counts[code]}&#8217;<br/>
-cat cookie_log |awk &rsquo;{print $10}&lsquo;|sort|uniq -c|sort -rn <br/>
-11.每秒并发：
-awk &rsquo;{if($10~/200|30|404/)COUNT[$5]++}END{for( a in COUNT) print a,COUNT[a]}&lsquo;|sort -k 2 -nr|head -n10  <br/>
-12.带宽统计
-cat apache.log |awk &rsquo;{if($7~/GET/) count++}END{print &ldquo;client_request=&#8221;count}&lsquo; <br/>
-cat apache.log |awk &rsquo;{BYTE+=$11}END{print &#8220;client_kbyte_out=&#8221;BYTE/1024&#8221;KB&rdquo;}&lsquo;  <br/>
-13.找出某天访问次数最多的10个IP<br/>
-cat cookie_log | grep &ldquo;17/Mar/2014&rdquo; |awk &rsquo;{print $3}&lsquo;|sort |uniq -c|sort -nr|head <br/>
-14.当天ip连接数最高的ip都在干些什么: <br/>
-cat cookie_log | grep &ldquo;10.0.21.17&rdquo; | awk &rsquo;{print $8}&lsquo; | sort | uniq -c | sort -nr | head -n 10  <br/>
-15.找出访问次数最多的几个分钟 <br/>
-awk &rsquo;{print $1}&lsquo; cookie_log | grep &ldquo;20/Mar/2011&rdquo; |cut -c 14-18|sort|uniq -c|sort -nr|head</li>
-</ol>
+<p>2.获取访问最高的10个IP地址  同时也可以按时间来查询</p>
 
+<pre><code>cat cookie_log|awk '{print $1}'|sort|uniq -c|sort -nr|head -10    
+</code></pre>
+
+<p>3.列出传输最大的几个exe文件（分析下载站的时候常用）</p>
+
+<pre><code>cat cookie_log |awk '($7~/\.exe/){print $10 " " $1 " " $4 " " $7}'|sort -nr|head -20    
+</code></pre>
+
+<p>4.列出输出大于200000byte(约200kb)的exe文件以及对应文件发生次数</p>
+
+<pre><code>cat cookie_log |awk '($10 &gt; 200000 &amp;&amp; $7~/\.exe/){print $7}'|sort -n|uniq -c|sort -nr|head -100    
+</code></pre>
+
+<p>5.如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面</p>
+
+<pre><code>cat cookie_log |awk '($7~/\.php/){print $NF " " $1 " " $4 " " $7}'|sort -nr|head -100    
+</code></pre>
+
+<p>6.列出最最耗时的页面(超过60秒的)的以及对应页面发生次数</p>
+
+<pre><code>cat cookie_log |awk '($NF &gt; 60 &amp;&amp; $7~/\.html/){print $7}'|sort -n|uniq -c|sort -nr|head -100   
+</code></pre>
+
+<p>7.列出传输时间超过 30 秒的文件</p>
+
+<pre><code>cat cookie_log |awk '($NF &gt; 30){print $7}'|sort -n|uniq -c|sort -nr|head -20   
+</code></pre>
+
+<p>8.统计网站流量（G)</p>
+
+<pre><code>cat cookie_log |awk '{sum+=$10} END {print sum/1024/1024/1024}'   
+</code></pre>
+
+<p>9.统计404的连接</p>
+
+<pre><code>awk '($10 ~/404/)' cookie_log | awk '{print $10,$13}' | sort     
+</code></pre>
+
+<p>10.统计http status.</p>
+
+<pre><code>cat cookie_log |awk '{counts[$(10)]+=1}; END {for(code in counts) print code, counts[code]}'  
+cat cookie_log |awk '{print $10}'|sort|uniq -c|sort -rn   
+</code></pre>
+
+<p>11.每秒并发：</p>
+
+<pre><code>awk '{if($10~/200|30|404/)COUNT[$5]++}END{for( a in COUNT) print a,COUNT[a]}'|sort -k 2 -nr|head -n10    
+</code></pre>
+
+<p>12.带宽统计</p>
+
+<pre><code>cat apache.log |awk '{if($7~/GET/) count++}END{print "client_request="count}'   
+cat apache.log |awk '{BYTE+=$11}END{print "client_kbyte_out="BYTE/1024"KB"}'    
+</code></pre>
+
+<p>13.找出某天访问次数最多的10个IP</p>
+
+<pre><code>cat cookie_log | grep "17/Mar/2014" |awk '{print $3}'|sort |uniq -c|sort -nr|head   
+</code></pre>
+
+<p>14.当天ip连接数最高的ip都在干些什么:</p>
+
+<pre><code>cat cookie_log | grep "10.0.21.17" | awk '{print $8}' | sort | uniq -c | sort -nr | head -n 10    
+</code></pre>
+
+<p>15.找出访问次数最多的几个分钟</p>
+
+<pre><code>awk '{print $1}' cookie_log | grep "20/Mar/2011" |cut -c 14-18|sort|uniq -c|sort -nr|head   
+</code></pre>
 
 <h2>连接状态</h2>
 
