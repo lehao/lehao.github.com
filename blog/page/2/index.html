@@ -9,8 +9,7 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="其实很简单：选择工程 -&gt; 右键 -&gt; Restore from Local History 搞定，简单吧！
-">
+  <meta name="description" content="先给大家解释下名词 RTB: (Real Time Bidding)中文名为实时竞价，是一种利用第三方技术在数以百万计的网站上针对每一个用户展示行为进行评估以及出价的竞价技术 DSP: (Demand Side Platform)是一个跨越不同广告资源平台，具有一定数据基础的,能使用统一的定向投放 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/31/rtb/">广告交易平台</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-31T14:41:00+08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
+        
+         | <a href="/blog/2013/01/31/rtb/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>先给大家解释下名词</p>
+
+<blockquote><p>RTB: (Real Time Bidding)中文名为实时竞价，是一种利用第三方技术在数以百万计的网站上针对每一个用户展示行为进行评估以及出价的竞价技术</p>
+
+<p>DSP: (Demand Side Platform)是一个跨越不同广告资源平台，具有一定数据基础的,能使用统一的定向投放，数据，优化和报告，透明并自动实时地购买媒介广告的需求方平台</p>
+
+<p>Ad Exchange: 针对每次展示进行实时竞价的推广交换市场，能帮助广告联盟、代理结构和第三方技术提供商通过实时竞价的方式购买众多互联网站点的广告资源。</p>
+
+<p>SSP: (Supply Side Platform)是一个网络流量整合平台，拥有大量的网络流量，提供给广告需求方做广告投放。流量来源复杂，融合各大门户网站，视频网络，游戏网络等。</p></blockquote>
+
+<p>同时给大伙说下淘宝平台RTB</p>
+
+<p>淘宝TANX营销平台包括三块：1.淘宝客。2.直通车。3.钻展</p>
+
+<p>实时竞价（RTB）：最合适的受众在最适合的时间，最适合的媒体上看到最适合他 的广告，实现多方共赢。</p>
+
+<p>RTB构成：1.成熟的供应方平台（SSP）；2.需求方平台（DSP）；3.DMP平台（足量用户数据，数据整合，深入受众分析）</p>
+
+<p>RTB精髓：1.实时竞价；2.智能投放</p>
+
+<p>结构图：</p>
+
+<p><img src="../images/blogImgs/rtb.jpg" alt="Alt text" /></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -715,49 +774,6 @@ sudo /etc/init.d/apache2 restart
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/28/batch-quickly-replace-string/">批量替换文件中的字符串</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-28T11:24:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/28/batch-quickly-replace-string/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>批量替换文件中的字符串：
-你可以先查询下看你要替换的字符串是否会包含在一些别的词中，避免代替其它的词的意思。
-<code>find ./ -name "*.vm" | xargs grep "content" </code></p>
-
-<p>确认这个内容都是你要代替的时候，再执行以下这行命令就可以了
-<code>find ./ -name "*.vm" | xargs sed -i "s/content/replacecontent/g" </code></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -786,6 +802,10 @@ sudo /etc/init.d/apache2 restart
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/19/linux-apache-grep-log/">linux下grep分析APACHE 服务器日志 命令集合</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/18/special-character/">特殊字符的含义</a>
       </li>
     
@@ -799,10 +819,6 @@ sudo /etc/init.d/apache2 restart
     
       <li class="post">
         <a href="/blog/2014/02/20/zhaopin/">alibaba招聘</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/30/spring/">spring</a>
       </li>
     
   </ul>

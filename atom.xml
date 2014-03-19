@@ -4,7 +4,7 @@
   <title><![CDATA[乐皓博客]]></title>
   <link href="http://www.ilehao.com/atom.xml" rel="self"/>
   <link href="http://www.ilehao.com/"/>
-  <updated>2014-03-18T14:48:46+08:00</updated>
+  <updated>2014-03-19T15:20:36+08:00</updated>
   <id>http://www.ilehao.com/</id>
   <author>
     <name><![CDATA[乐皓]]></name>
@@ -12,6 +12,129 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[linux下grep分析APACHE 服务器日志 命令集合]]></title>
+    <link href="http://www.ilehao.com/blog/2014/03/19/linux-apache-grep-log/"/>
+    <updated>2014-03-19T14:54:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2014/03/19/linux-apache-grep-log</id>
+    <content type="html"><![CDATA[<p>h2.分析日志</p>
+
+<p>1.分析日志文件下 2014-03-17 访问页面最高 的前20个 URL  并排序</p>
+
+<pre><code>cat cookie_log |grep '17/Mar/2014'| awk '{print $12}'|sort|uniq -c|sort -nr|head -20
+</code></pre>
+
+<ol>
+<li>获取访问最高的10个IP地址  同时也可以按时间来查询
+ cat cookie_log|awk &lsquo;{print $1}&rsquo;|sort|uniq -c|sort -nr|head -10
+3.列出传输最大的几个exe文件（分析下载站的时候常用）
+ cat cookie_log |awk &lsquo;($7~/.exe/){print $10 &ldquo; &rdquo; $1 &ldquo; &rdquo; $4 &ldquo; &rdquo; $7}&rsquo;|sort -nr|head -20
+4.列出输出大于200000byte(约200kb)的exe文件以及对应文件发生次数
+ cat cookie_log |awk &lsquo;($10 > 200000 &amp;&amp; $7~/.exe/){print $7}&rsquo;|sort -n|uniq -c|sort -nr|head -100
+5.如果日志最后一列记录的是页面文件传输时间，则有列出到客户端最耗时的页面
+ cat cookie_log |awk &lsquo;($7~/.php/){print $NF &ldquo; &rdquo; $1 &ldquo; &rdquo; $4 &ldquo; &rdquo; $7}&rsquo;|sort -nr|head -100
+6.列出最最耗时的页面(超过60秒的)的以及对应页面发生次数
+ cat cookie_log |awk &lsquo;($NF > 60 &amp;&amp; $7~/.html/){print $7}&rsquo;|sort -n|uniq -c|sort -nr|head -100
+7.列出传输时间超过 30 秒的文件
+ cat cookie_log |awk &lsquo;($NF > 30){print $7}&rsquo;|sort -n|uniq -c|sort -nr|head -20
+8.统计网站流量（G)
+ cat cookie_log |awk &lsquo;{sum+=$10} END {print sum/1024/1024/1024}&rsquo;
+9.统计404的连接
+ awk &lsquo;($10 ~/404/)&rsquo; cookie_log | awk &lsquo;{print $10,$13}&rsquo; | sort</li>
+<li>统计http status.
+cat cookie_log |awk &lsquo;{counts[$(10)]+=1}; END {for(code in counts) print code, counts[code]}&rsquo;
+cat cookie_log |awk &lsquo;{print $10}&rsquo;|sort|uniq -c|sort -rn
+11.每秒并发：
+awk &lsquo;{if($10~/200|30|404/)COUNT[$5]++}END{for( a in COUNT) print a,COUNT[a]}&rsquo;|sort -k 2 -nr|head -n10
+12.带宽统计
+cat apache.log |awk &lsquo;{if($7~/GET/) count++}END{print &ldquo;client_request=&#8221;count}&rsquo;
+cat apache.log |awk &lsquo;{BYTE+=$11}END{print &#8220;client_kbyte_out=&#8221;BYTE/1024&#8221;KB&rdquo;}&rsquo;
+13.找出某天访问次数最多的10个IP
+cat cookie_log | grep &ldquo;17/Mar/2014&rdquo; |awk &lsquo;{print $3}&rsquo;|sort |uniq -c|sort -nr|head
+14.当天ip连接数最高的ip都在干些什么:
+cat cookie_log | grep &ldquo;10.0.21.17&rdquo; | awk &lsquo;{print $8}&rsquo; | sort | uniq -c | sort -nr | head -n 10
+15.找出访问次数最多的几个分钟
+awk &lsquo;{print $1}&rsquo; cookie_log | grep &ldquo;20/Mar/2011&rdquo; |cut -c 14-18|sort|uniq -c|sort -nr|head</li>
+</ol>
+
+
+<p>h2.连接状态
+1.查看tcp连接状态:</p>
+
+<pre><code>netstat -nat |awk '{print $6}'|sort|uniq -c|sort -rn
+netstat -n | awk '/^tcp/ {++S[$NF]};END {for(a in S) print a, S[a]}'
+netstat -n | awk '/^tcp/ {++state[$NF]}; END {for(key in state) print key,"\t",state[key]}'
+netstat -n | awk '/^tcp/ {++arr[$NF]};END {for(k in arr) print k,"\t",arr[k]}'
+netstat -n |awk '/^tcp/ {print $NF}'|sort|uniq -c|sort -rn
+netstat -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c
+netstat -ant|awk '/ip:80/{split($5,ip,":");++S[ip[1]]}END{for (a in S) print S[a],a}' |sort -n
+netstat -ant|awk '/:80/{split($5,ip,":");++S[ip[1]]}END{for (a in S) print S[a],a}' |sort -rn|head -n 10
+awk 'BEGIN{printf ("http_code\tcount_num\n")}{COUNT[$10]++}END{for (a in COUNT) printf a"\t\t"COUNT[a]"\n"}'
+</code></pre>
+
+<p>2.查找请求数请20个IP（常用于查找攻来源）：</p>
+
+<pre><code>netstat -anlp|grep 80|grep tcp|awk '{print $5}'|awk -F: '{print $1}'|sort|uniq -c|sort -nr|head -n20
+netstat -ant |awk '/:80/{split($5,ip,":");++A[ip[1]]}END{for(i in A) print A[i],i}' |sort -rn|head -n20
+</code></pre>
+
+<p>3.用tcpdump嗅探80端口的访问看看谁最高</p>
+
+<pre><code>tcpdump -i eth0 -tnn dst port 80 -c 1000 | awk -F"." '{print $1"."$2"."$3"."$4}' | sort | uniq -c | sort -nr |head -20
+</code></pre>
+
+<p>4.查找较多time_wait连接</p>
+
+<pre><code>netstat -n|grep TIME_WAIT|awk '{print $5}'|sort|uniq -c|sort -rn|head -n20
+</code></pre>
+
+<p>5.找查较多的SYN连接</p>
+
+<pre><code>netstat -an | grep SYN | awk '{print $5}' | awk -F: '{print $1}' | sort | uniq -c | sort -nr | more
+</code></pre>
+
+<p>6.根据端口列进程</p>
+
+<pre><code>netstat -ntlp | grep 80 | awk '{print $7}' | cut -d/ -f1
+</code></pre>
+
+<p>h2.附 sort、uniq命令参数说明
+sort命令:</p>
+
+<pre><code>表示逐行对指定文件中的所有行进行排序，并将结果显示在标准输出上。如果不指定文件或者使用“一”
+表示文件，则排序内容来自标准输入。排序比较是依据从输入文件的每一行中提取的一个或多个排序关键字进
+行的。排序关键字定义了用来排序的最小的字符序列。在默认情况下，排序关键字的顺序由系统使用的字符集
+决定。
+选项：
+-m 对己经排好序的文件统一进行合并，但不做排序。
+-c 检查给定的文件是否己排好序，若没有，则显示出错消息，不做排序。
+-u与-c 选项一起用，严格地按顺序检查；否则，对排序后的重复行只输出第一行。
+-o 文件名 将排序输出放到该文件名所指定的文件中。如果该文件不存在，则创建一个新文件。
+改变排序规则的选项主要有：
+-d 按字典顺序排序，比较时仅考虑空白符和字母数字符。
+-f 忽略字母的大小写。
+-i 忽略非打印字符。
+-M 规定月份的比较次序是（未知）&lt;”JAN”&lt;”FEB”&lt;…&lt;”DEC”。 
+-r 按逆序排序。默认排序输出是按升序排序的。
+-k n1[,n2] 指定从文本行的第n1字段开始至第n2字段（不包括第n2字段）中间的内容作为排序关键字。如果没有n2，则关键字是从第n1个字段到行尾的所有字段。n1和n2可以是小数形式。如”x.y”，x表示第x字段，y表示第x字段中的第y个字符。字段和字符的文职都是从1开始算起的。
+-b 比较关键字时忽略前导的空白符（空格或制表符）。
+-t 字符将指定的“字符”作为字段间的分隔符。
+</code></pre>
+
+<p>uniq命令：</p>
+
+<pre><code>[选项] 文件
+说明：uniq命令读取输入文件，并比较相邻的行，去掉重复的行一行。该命令加工后的结果写到输出文件中。
+输入文件和输出文件必须不同。用“一”表示，则从标准输入上读取。选项：
+-c 显示输出时，在每行的行首加上该行在文件中出现的次数。
+-d 只显示重复行。
+-f --skip-fields=N  忽略比较前N个字段。
+-s --skip-chars=N 忽略比较前N个字段。
+-u 只显示文件中不重复的行。
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[特殊字符的含义]]></title>
@@ -1178,20 +1301,6 @@ sudo /etc/init.d/apache2 restart
 </code></pre>
 
 <p>至此apache2+php+mysql的环境就完成了。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[批量替换文件中的字符串]]></title>
-    <link href="http://www.ilehao.com/blog/2012/10/28/batch-quickly-replace-string/"/>
-    <updated>2012-10-28T11:24:00+08:00</updated>
-    <id>http://www.ilehao.com/blog/2012/10/28/batch-quickly-replace-string</id>
-    <content type="html"><![CDATA[<p>批量替换文件中的字符串：
-你可以先查询下看你要替换的字符串是否会包含在一些别的词中，避免代替其它的词的意思。
-<code>find ./ -name "*.vm" | xargs grep "content" </code></p>
-
-<p>确认这个内容都是你要代替的时候，再执行以下这行命令就可以了
-<code>find ./ -name "*.vm" | xargs sed -i "s/content/replacecontent/g" </code></p>
 ]]></content>
   </entry>
   

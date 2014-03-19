@@ -9,11 +9,10 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="基本的替换
-:s/vivian/sky/ 替换当前行第一个 vivian 为 sky
-:s/vivian/sky/g 替换当前行所有 vivian 为 sky
-:n,$s/vivian/sky/ 替换第 n 行开始到最后一行中每一行的第一个 vivian 为 sky
-:n,$s/vivian/ &hellip;">
+  <meta name="description" content="批量替换文件中的字符串：
+你可以先查询下看你要替换的字符串是否会包含在一些别的词中，避免代替其它的词的意思。
+find ./ -name "*.vm" | xargs grep "content" 确认这个内容都是你要代替的时候，再执行以下这行命令就可以了
+find ./ -name "*.vm &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +68,49 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/28/batch-quickly-replace-string/">批量替换文件中的字符串</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-28T11:24:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/28/batch-quickly-replace-string/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>批量替换文件中的字符串：
+你可以先查询下看你要替换的字符串是否会包含在一些别的词中，避免代替其它的词的意思。
+<code>find ./ -name "*.vm" | xargs grep "content" </code></p>
+
+<p>确认这个内容都是你要代替的时候，再执行以下这行命令就可以了
+<code>find ./ -name "*.vm" | xargs sed -i "s/content/replacecontent/g" </code></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -378,6 +420,10 @@ StrictHostKeyChecking no
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/19/linux-apache-grep-log/">linux下grep分析APACHE 服务器日志 命令集合</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/18/special-character/">特殊字符的含义</a>
       </li>
     
@@ -391,10 +437,6 @@ StrictHostKeyChecking no
     
       <li class="post">
         <a href="/blog/2014/02/20/zhaopin/">alibaba招聘</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/08/30/spring/">spring</a>
       </li>
     
   </ul>
