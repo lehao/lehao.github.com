@@ -9,10 +9,11 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="批量替换文件中的字符串：
-你可以先查询下看你要替换的字符串是否会包含在一些别的词中，避免代替其它的词的意思。
-find ./ -name "*.vm" | xargs grep "content" 确认这个内容都是你要代替的时候，再执行以下这行命令就可以了
-find ./ -name "*.vm &hellip;">
+  <meta name="description" content="1.安装apache2.0
+sudo apt-get install apache2 当然你也可以用编译的方式安装apache2
+apache：下载地址：http://httpd.apache.org/download.cgi#apache22
+编译前准备:
+sudo apt-get &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -68,6 +69,97 @@ find ./ -name "*.vm &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/28/ubuntu-apache-php-mysql/">Ubuntu 配置Apache2+PHP+MySQL</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-28T11:24:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/28/ubuntu-apache-php-mysql/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>1.安装apache2.0
+<code>sudo apt-get install apache2  </code></p>
+
+<p>当然你也可以用编译的方式安装apache2
+apache：下载地址：<a href="http://httpd.apache.org/download.cgi#apache22">http://httpd.apache.org/download.cgi#apache22</a>
+编译前准备:
+<code>sudo apt-get install build-essential，</code>
+不然会出现 checking for C compiler default output file name&hellip; configure: error: C compiler cannot create executables
+sudo apt-get install zlib1g-dev
+不然 会出现 checking for zlib location&hellip; not found
+checking whether to enable mod_deflate&hellip; configure: error: mod_deflate has been requested but can not be built due to prerequisite failures
+然后从官网上下载apache2，然后解压（tar -xzvf）编译 (configure / make / make install)
+*.config, make and make install:</p>
+
+<pre><code>sudo ./configure --prefi=/usr/soft/apache2 --enable-rewrite=static --with-mpm=worker --enable-so --enable-proxy --enable-proxy-http --enable-deflate --enable-headers --enable-expires --with-included-apr 
+make 
+make install 
+</code></pre>
+
+<p>安装后在浏览器中打开：
+<a href="http://localhost/">http://localhost/</a>
+或者<a href="http://127.0.0.1">http://127.0.0.1</a>
+如果出现It works!那证明OK了</p>
+
+<p>2.安装PHP</p>
+
+<p>依次在终端打开：</p>
+
+<pre><code>sudo apt-get install php5 //安装PHP5  
+sudo apt-get install libapache2-mod-php5 //配置APACHE+PHP  
+sudo /etc/init.d/apache2 restart //重启APACHE  
+</code></pre>
+
+<p>测试：
+打开
+ <code>sudo  vi /var/www/testphp.php </code></p>
+
+<p>然后随意输入点东西（我输入的是test）再保存。
+然后在浏览器中输入<a href="http://127.0.0.1/testphp.php%E6%88%96%E8%80%85http://localhost/testphp.php">http://127.0.0.1/testphp.php%E6%88%96%E8%80%85http://localhost/testphp.php</a>
+如果显示出你输入的东西即为成功</p>
+
+<p>3.安装MYSQL
+<code> sudo apt-get install mysql-server </code></p>
+
+<p>安装完成按提示设置root密码</p>
+
+<p>4、让apache、php支持 mysql</p>
+
+<pre><code>sudo apt-get install libapache2-mod-auth-mysql  
+sudo apt-get install php5-mysql  
+sudo /etc/init.d/apache2 restart  
+</code></pre>
+
+<p>至此apache2+php+mysql的环境就完成了。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -420,6 +512,10 @@ StrictHostKeyChecking no
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/21/string-intern/">理解 String及String.intern()</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/19/linux-apache-grep-log/">linux下grep分析APACHE 服务器日志 命令集合</a>
       </li>
     
@@ -433,10 +529,6 @@ StrictHostKeyChecking no
     
       <li class="post">
         <a href="/blog/2014/02/21/git-blog-r-and-q/">git blog R&amp;Q</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/20/zhaopin/">alibaba招聘</a>
       </li>
     
   </ul>

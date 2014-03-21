@@ -9,7 +9,7 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="分析日志 1.分析日志文件下 2014-03-17 访问页面最高 的前20个 URL 并排序 cat cookie_log |grep '17/Mar/2014'| awk '{print $12}'|sort|uniq -c|sort -nr|head -20 2.获取访问最高的10个IP地址 &hellip;">
+  <meta name="description" content="今天我们来聊聊String 及String.intern() 先来聊聊String,对于做java开发的我们,string应该是相当熟悉的 1、String不属于8种基本数据类型，String是一个对象,所以String的默认值也是null。但它又有其它对象没有的一些特性，比如它是final类等等 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,130 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/21/string-intern/">理解 String及String.intern()</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-21T14:18:00+08:00" pubdate data-updated="true">Mar 21<span>st</span>, 2014</time>
+        
+         | <a href="/blog/2014/03/21/string-intern/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>今天我们来聊聊String 及String.intern()</h2>
+
+<h2>先来聊聊String,对于做java开发的我们,string应该是相当熟悉的</h2>
+
+<p>1、String不属于8种基本数据类型，String是一个对象,所以String的默认值也是null。但它又有其它对象没有的一些特性，比如它是final类等等。 <br/>
+2、new String()和new String(&ldquo;&rdquo;)都是申明一个新的空字符串，是空串不是null。  <br/>
+3、String str=”abc”,String str=new String(&ldquo;abc&rdquo;)的区别。</p>
+
+<blockquote><p>Java把内存划分成两种：一种是栈内存，一种是堆内存。   <br/>
+在函数中定义的一些基本类型的变量和对象的引用变量都在函数的栈内存中分配。  <br/>
+当在一段代码块定义一个变量时，Java就在栈中为这个变量分配内存空间，当超过变量的作用域后，Java会自动释放掉为该变量所分配的内存空间，该内存空间可以立即被另作他用。 <br/>
+堆内存用来存放由new创建的对象和数组。 <br/>
+在堆中分配的内存，由Java虚拟机的自动垃圾回收器来管理。 <br/>
+在堆中产生了一个数组或对象后，还可以在栈中定义一个特殊的变量，让栈中这个变量的取值等于数组或对象在堆内存中的首地址，栈中的这个变量就成了数组或对象的引用变量。  <br/>
+引用变量就相当于是为数组或对象起的一个名称，以后就可以在程序中使用栈中的引用变量来访问堆中的数组或对象。   <br/>
+具体的说：
+栈与堆都是Java用来在Ram中存放数据的地方。与C++不同，Java自动管理栈和堆，程序员不能直接地设置栈或堆。
+Java的堆是一个运行时数据区,类的(对象从中分配空间。这些对象通过new、newarray、anewarray和multianewarray等指令建立，它们不需要程序代码来显式的释放。堆是由垃圾回收来负责的，堆的优势是可以动态地分配内存大小，生存期也不必事先告诉编译器，因为它是在运行时动态分配内存的，Java的垃圾收集器会自动收走这些不再使用的数据。但缺点是，由于要在运行时动态分配内存，存取速度较慢。
+栈的优势是，存取速度比堆要快，仅次于寄存器，栈数据可以共享。但缺点是，存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。栈中主要存放一些基本类型的变量（,int, short, long, byte, float, double, boolean, char）和对象句柄。
+栈有一个很重要的特殊性，就是存在栈中的数据可以共享。假设我们同时定义：</p>
+
+<pre><code>int a = 3; 
+int b = 3； 
+</code></pre>
+
+<p>编译器先处理int a = 3；首先它会在栈中创建一个变量为a的引用，然后查找栈中是否有3这个值，如果没找到，就将3存放进来，然后将a指向3。接着处理int b = 3；在创建完b的引用变量后，因为在栈中已经有3这个值，便将b直接指向3。这样，就出现了a与b同时均指向3的情况。这时，如果再令a=4；那么编译器会重新搜索栈中是否有4值，如果没有，则将4存放进来，并令a指向4；如果已经有了，则直接将a指向这个地址。因此a值的改变不会影响到b的值。要注意这种数据的共享与两个对象的引用同时指向一个对象的这种共享是不同的，因为这种情况a的修改并不会影响到b, 它是由编译器完成的，它有利于节省空间。而一个对象引用变量修改了这个对象的内部状态，会影响到另一个对象引用变量。
+String是一个特殊的包装类数据。可以用：</p>
+
+<pre><code>String str = new String("abc"); 
+String str = "abc"; 
+</code></pre>
+
+<p>两种的形式来创建，第一种是用new()来新建对象的，它会在存放于堆中。每调用一次就会创建一个新的对象。
+而第二种是先在栈中创建一个对String类的对象引用变量str，然后查找栈中有没有存放&#8221;abc&#8221;，如果没有，则将&#8221;abc&#8221;存放进栈，并令str指向”abc”，如果已经有”abc” 则直接令str指向“abc”。
+比较类里面的数值是否相等时，用equals()方法；当测试两个包装类的引用是否指向同一个对象时，用==，下面用例子说明上面的理论。</p>
+
+<pre><code>String str1 = "abc"; 
+String str2 = "abc"; 
+System.out.println(str1==str2); //true 
+</code></pre>
+
+<p>可以看出str1和str2是指向同一个对象的。</p>
+
+<pre><code>String str1 =new String ("abc"); 
+String str2 =new String ("abc"); 
+System.out.println(str1==str2); // false 
+</code></pre>
+
+<p>用new的方式是生成不同的对象。每一次生成一个。
+因此用第二种方式创建多个”abc”字符串,在内存中其实只存在一个对象而已。 这种写法有利与节省内存空间. 同时它可以在一定程度上提高程序的运行速度，因为JVM会自动根据栈中数据的实际情况来决定是否有必要创建新对象。而对于String str = new String(&ldquo;abc&rdquo;)；的代码，则一概在堆中创建新对象，而不管其字符串值是否相等，是否有必要创建新对象，从而加重了程序的负担。
+另一方面, 要注意: 我们在使用诸如String str = &ldquo;abc&#8221;；的格式定义类时，总是想当然地认为，创建了String类的对象str。担心陷阱！对象可能并没有被创建！而可能只是指向一个先前已经创建的对象。只有通过new()方法才能保证每次都创建一个新的对象。由于String类的immutable性质，当String变量需要经常变换其值时，应该考虑使用StringBuffer类，以提高程序效率。</p></blockquote>
+
+<h2>现在我们再说说String.intern(), JDK 7里String.intern生成的String不再是在perm gen分配，而是在Java Heap中分配</h2>
+
+<blockquote><p>In JDK 7, interned strings are no longer allocated in the permanent generation of the Java heap, but are instead allocated in the main part of the Java heap (known as the young and old generations), along with the other objects created by the application. This change will result in more data residing in the main Java heap, and less data in the permanent generation, and thus may require heap sizes to be adjusted. Most applications will see only relatively small differences in heap usage due to this change, but larger applications that load many classes or make heavy use of the String.intern() method will see more sign</p></blockquote>
+
+<h2>先对这个方法做个解释##</h2>
+
+<blockquote><p>public String intern()
+返回字符串对象的规范化表示形式。
+一个初始时为空的字符串池，它由类 String 私有地维护。
+当调用 intern 方法时，如果池已经包含一个等于此 String 对象的字符串（该对象由 equals(Object) 方法确定），则返回池中的字符串。否则，将此 String 对象添加到池中，并且返回此 String 对象的引用。
+它遵循对于任何两个字符串 s 和 t，当且仅当 s.equals(t) 为 true 时，s.intern() == t.intern() 才为 true。
+所有字面值字符串和字符串赋值常量表达式都是内部的。
+返回：
+一个字符串，内容与此字符串相同，但它保证来自字符串池中。</p></blockquote>
+
+<h2>下面我们看一个范例：</h2>
+
+<pre><code>String str1 = "abc";
+String str2 = "def";
+String str3 = "abcdef";
+String str4 = str1 + str2;
+String str5 = new String("abcdef");
+System.out.println(str5.equals(str3)); //true
+System.out.println(str5 == str3); //false
+System.out.println(str5.intern() == str3); //true
+System.out.println(str5.intern() == str4); //jdk6 false jdk7 true
+</code></pre>
+
+<p>看到上面的结果大家肯定有疑惑，下面我为大家一一解答： <br/>
+1、str5.equals(str3)这个结果为true，不用太多的解释，因为字符串的值的内容相同 <br/>
+2、str5 == str3对比的是引用的地址是否相同，由于str5采用new String方式定义的，所以地址引用一定不相等。所以结果为false。<br/>
+3、当str5调用intern的时候，会检查字符串池中是否含有该字符串。由于之前定义的str3已经进入字符串池中，所以会得到相同的引用。<br/>
+4、原因是因为JDK 6中执行String.intern()时需要将此字符串的实例cp到perm并生成一个新的String对象，因此上面的s5和s4的对象地址是不同的，而在JDK 7中，执行String.intern()时，则只是在String Pool中记录此字符内容对应的字符串实例。</p>
+
+<p>尽管在比较字符串时，一般都不会用 == 去比较，但还是要知道String.intern()的这个变化。String.intern()放进的String Pool是一个固定大小的Hashtable，默认值是1009，如果放进String Pool的String非常多，就会造成Hash冲突严重，从而导致链表会很长，而链表长了后直接会造成的影响就是当调用String.intern时性能会大幅下降（因为要一个一个找）。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1197,78 +1321,6 @@ Dload  Upload   Total   Spent    Left  Speed
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/01/31/tair/">Tair</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-31T15:02:00+08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
-        
-         | <a href="/blog/2013/01/31/tair/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>什么是tair</h2>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;Tair是一个高性能，分布式，可扩展，高可靠的key/value结构存储系统。
-Tair提供两种存储方式：
-非持久，相当于cache
-mdb引擎: 只支持key/value，单机性能7w qps（测试条件：单条记录512字节，响应时间2ms内）
-rdb引擎: 不仅支持key/value，还支持list/hashmap/set/sortedset等复杂数据结构。
-持久化存储，类似数据库。数据直接存放进硬盘，并且至少会有两份。
-kdb引擎：采用了kyoto cabinet做为引擎，性能在2000 qps单台。
-ldb引擎：采用了leveldb做为引擎，并且自带cache。服务器采用了ssd，性能在5w qps以上。
-Tair现在支持Java和C/C++版本的客户端。</p>
-
-<h2>为什么要用tair</h2>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;高可用：能够提供很高的可用性，在服务器宕机的场景下，系统能提供自动化的failover处理；你大可不必对后端某台集群的机器宕机而提心吊胆；
-可扩展：能够提供接近线性的扩展能力，并且能够做到扩容过程中不影响前端服务的使用；因此，应用端接入的是一个海量的存储系统，不用太过担心访问量和容量的增长引起数据存储层架构的变化；
-高性能：mdb单机性能7w qps，响应时间在2ms内（测试条件：单条平均记录512字节） ldb 性能在5w qps以上，并自带cache，响应时间在4ms内（测试条件：ssd,单条平均记录4096字节）
-高可靠：有专门的维护团队，保证tair稳健的运行，同时提供数据备份。</p>
-
-<h2>tair运用场景</h2>
-
-<p>&nbsp;&nbsp;&nbsp;&nbsp;Tair存储包括缓存和持久化两种，各有其适用的场景
-Tair缓存使用的场景
-数据可以以key/value的形式存储
-数据可以接受丢失
-访问速度要求很高
-单个数据大小不是很大，一般在KB级别
-数据更新不频繁
-Tair持久化适用的场景
-数据可以以key/value的形式存储
-数据需要持久化
-数据量很大，并且有较大的增长可能性
-单个数据大小不是很大，一般在KB级别</p>
-
-<h2>tair结构</h2>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1295,6 +1347,10 @@ Tair持久化适用的场景
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/21/string-intern/">理解 String及String.intern()</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/19/linux-apache-grep-log/">linux下grep分析APACHE 服务器日志 命令集合</a>
       </li>
     
@@ -1308,10 +1364,6 @@ Tair持久化适用的场景
     
       <li class="post">
         <a href="/blog/2014/02/21/git-blog-r-and-q/">git blog R&amp;Q</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/20/zhaopin/">alibaba招聘</a>
       </li>
     
   </ul>

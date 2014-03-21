@@ -9,7 +9,10 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="先给大家解释下名词 RTB: (Real Time Bidding)中文名为实时竞价，是一种利用第三方技术在数以百万计的网站上针对每一个用户展示行为进行评估以及出价的竞价技术 DSP: (Demand Side Platform)是一个跨越不同广告资源平台，具有一定数据基础的,能使用统一的定向投放 &hellip;">
+  <meta name="description" content="什么是tair &nbsp;&nbsp;&nbsp;&nbsp;Tair是一个高性能，分布式，可扩展，高可靠的key/value结构存储系统。
+Tair提供两种存储方式：
+非持久，相当于cache
+mdb引擎: 只支持key/value，单机性能7w qps（测试条件：单条记录512字节， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +68,78 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/31/tair/">Tair</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-31T15:02:00+08:00" pubdate data-updated="true">Jan 31<span>st</span>, 2013</time>
+        
+         | <a href="/blog/2013/01/31/tair/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>什么是tair</h2>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Tair是一个高性能，分布式，可扩展，高可靠的key/value结构存储系统。
+Tair提供两种存储方式：
+非持久，相当于cache
+mdb引擎: 只支持key/value，单机性能7w qps（测试条件：单条记录512字节，响应时间2ms内）
+rdb引擎: 不仅支持key/value，还支持list/hashmap/set/sortedset等复杂数据结构。
+持久化存储，类似数据库。数据直接存放进硬盘，并且至少会有两份。
+kdb引擎：采用了kyoto cabinet做为引擎，性能在2000 qps单台。
+ldb引擎：采用了leveldb做为引擎，并且自带cache。服务器采用了ssd，性能在5w qps以上。
+Tair现在支持Java和C/C++版本的客户端。</p>
+
+<h2>为什么要用tair</h2>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;高可用：能够提供很高的可用性，在服务器宕机的场景下，系统能提供自动化的failover处理；你大可不必对后端某台集群的机器宕机而提心吊胆；
+可扩展：能够提供接近线性的扩展能力，并且能够做到扩容过程中不影响前端服务的使用；因此，应用端接入的是一个海量的存储系统，不用太过担心访问量和容量的增长引起数据存储层架构的变化；
+高性能：mdb单机性能7w qps，响应时间在2ms内（测试条件：单条平均记录512字节） ldb 性能在5w qps以上，并自带cache，响应时间在4ms内（测试条件：ssd,单条平均记录4096字节）
+高可靠：有专门的维护团队，保证tair稳健的运行，同时提供数据备份。</p>
+
+<h2>tair运用场景</h2>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;Tair存储包括缓存和持久化两种，各有其适用的场景
+Tair缓存使用的场景
+数据可以以key/value的形式存储
+数据可以接受丢失
+访问速度要求很高
+单个数据大小不是很大，一般在KB级别
+数据更新不频繁
+Tair持久化适用的场景
+数据可以以key/value的形式存储
+数据需要持久化
+数据量很大，并且有较大的增长可能性
+单个数据大小不是很大，一般在KB级别</p>
+
+<h2>tair结构</h2>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -683,97 +758,6 @@ svn di -r ${VERSION}:head $1
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/28/ubuntu-apache-php-mysql/">Ubuntu 配置Apache2+PHP+MySQL</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-28T11:24:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/28/ubuntu-apache-php-mysql/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>1.安装apache2.0
-<code>sudo apt-get install apache2  </code></p>
-
-<p>当然你也可以用编译的方式安装apache2
-apache：下载地址：<a href="http://httpd.apache.org/download.cgi#apache22">http://httpd.apache.org/download.cgi#apache22</a>
-编译前准备:
-<code>sudo apt-get install build-essential，</code>
-不然会出现 checking for C compiler default output file name&hellip; configure: error: C compiler cannot create executables
-sudo apt-get install zlib1g-dev
-不然 会出现 checking for zlib location&hellip; not found
-checking whether to enable mod_deflate&hellip; configure: error: mod_deflate has been requested but can not be built due to prerequisite failures
-然后从官网上下载apache2，然后解压（tar -xzvf）编译 (configure / make / make install)
-*.config, make and make install:</p>
-
-<pre><code>sudo ./configure --prefi=/usr/soft/apache2 --enable-rewrite=static --with-mpm=worker --enable-so --enable-proxy --enable-proxy-http --enable-deflate --enable-headers --enable-expires --with-included-apr 
-make 
-make install 
-</code></pre>
-
-<p>安装后在浏览器中打开：
-<a href="http://localhost/">http://localhost/</a>
-或者<a href="http://127.0.0.1">http://127.0.0.1</a>
-如果出现It works!那证明OK了</p>
-
-<p>2.安装PHP</p>
-
-<p>依次在终端打开：</p>
-
-<pre><code>sudo apt-get install php5 //安装PHP5  
-sudo apt-get install libapache2-mod-php5 //配置APACHE+PHP  
-sudo /etc/init.d/apache2 restart //重启APACHE  
-</code></pre>
-
-<p>测试：
-打开
- <code>sudo  vi /var/www/testphp.php </code></p>
-
-<p>然后随意输入点东西（我输入的是test）再保存。
-然后在浏览器中输入<a href="http://127.0.0.1/testphp.php%E6%88%96%E8%80%85http://localhost/testphp.php">http://127.0.0.1/testphp.php%E6%88%96%E8%80%85http://localhost/testphp.php</a>
-如果显示出你输入的东西即为成功</p>
-
-<p>3.安装MYSQL
-<code> sudo apt-get install mysql-server </code></p>
-
-<p>安装完成按提示设置root密码</p>
-
-<p>4、让apache、php支持 mysql</p>
-
-<pre><code>sudo apt-get install libapache2-mod-auth-mysql  
-sudo apt-get install php5-mysql  
-sudo /etc/init.d/apache2 restart  
-</code></pre>
-
-<p>至此apache2+php+mysql的环境就完成了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/3/">&larr; Older</a>
@@ -802,6 +786,10 @@ sudo /etc/init.d/apache2 restart
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/03/21/string-intern/">理解 String及String.intern()</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/19/linux-apache-grep-log/">linux下grep分析APACHE 服务器日志 命令集合</a>
       </li>
     
@@ -815,10 +803,6 @@ sudo /etc/init.d/apache2 restart
     
       <li class="post">
         <a href="/blog/2014/02/21/git-blog-r-and-q/">git blog R&amp;Q</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/20/zhaopin/">alibaba招聘</a>
       </li>
     
   </ul>
