@@ -4,7 +4,7 @@
   <title><![CDATA[乐皓博客]]></title>
   <link href="http://www.ilehao.com/atom.xml" rel="self"/>
   <link href="http://www.ilehao.com/"/>
-  <updated>2014-03-21T15:20:55+08:00</updated>
+  <updated>2014-03-27T10:51:21+08:00</updated>
   <id>http://www.ilehao.com/</id>
   <author>
     <name><![CDATA[乐皓]]></name>
@@ -14,13 +14,53 @@
 
   
   <entry>
-    <title type="html"><![CDATA[理解 String及String.intern()]]></title>
+    <title type="html"><![CDATA[Thread wait sleep 区别]]></title>
+    <link href="http://www.ilehao.com/blog/2014/03/27/thread-wait-sleep/"/>
+    <updated>2014-03-27T10:19:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2014/03/27/thread-wait-sleep</id>
+    <content type="html"><![CDATA[<h4>线程调度是指系统为线程分配处理器使用权的过程，主要调度方式有两种：</h4>
+
+<p>1、协同式(Cooperative Threads-Scheduling) 线程调度 <br/>
+2、抢占式(Preemptive Threads-Scheduling) 线程调度</p>
+
+<p>抢先式调度又分为：时间片方式和独占方式。在时间片方式下，当前活动线程执行完当前时间片后，如果有其他处于就绪状态的相同优先级的线程，系统会将执行权交给其他就绪态的同优先级线程；当前活动线程转入等待执行队列，等待下一个时间片的调度。</p>
+
+<p>在独占方式下，当前活动线程一旦获得执行权，将一直执行下去，直到执行完毕或由于某种原因主动放弃CPU，或者是有一高优先级的线程处于就绪状态。</p>
+
+<h2>Thread.sleep()和　Object.wait()区别</h2>
+
+<h6>共同点：</h6>
+
+<p>1、保持多线程同步的一种方式，可以让程序的调用处阻塞指定的毫秒数，并返回。</p>
+
+<p>2、wait()和sleep()都可以通过interrupt()方法，打断线程的暂停状态 ，从而使线程立刻抛出InterruptedException。 例如线程A希望立即结束线程B，则可以对线程B对应的Thread实例调用interrupt方法。如果此刻线程B正在wait/sleep /join，则线程B会立刻抛出InterruptedException，在catch() {} 中直接return即可安全地结束线程。</p>
+
+<p>需要注意的是，InterruptedException是线程自己从内部抛出的，并不是interrupt()方法抛出的。对某一线程调用 interrupt()时，如果该线程正在执行普通的代码，那么该线程根本就不会抛出InterruptedException。但是，一旦该线程进入到 wait()/sleep()/join()后，就会立刻抛出InterruptedException 。</p>
+
+<h6>不同点：</h6>
+
+<p>1、sleep是Thread类的方法，是线程用来 控制自身流程的，比如有一个要报时的线程，每一秒中打印出一个时间，那么我就需要在print方法前面加上一个sleep让自己每隔一秒执行一次。就像个闹钟一样。
+wait是Object类的方法，用来线程间的通信，这个方法会使当前拥有该对象锁的进程等待知道其他线程调用notify方法时再醒来，不过你也可以给他指定一个时间，自动醒来。这个方法主要是用走不同线程之间的调度的。</p>
+
+<p>2、调用Thread.sleep()方法不会释放锁，而调用Object.wait()方法是会释放当前锁。
+JDK 7 中的解释：</p>
+
+<blockquote><p>public static void sleep(long millis) throws InterruptedException
+Causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds, subject to the precision and accuracy of system timers and schedulers.The thread does not lose ownership of any monitors.</p>
+
+<p>public final void wait() throws InterruptedException
+Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object. In other words, this method behaves exactly as if it simply performs the call wait(0).The current thread must own this object&rsquo;s monitor. The thread releases ownership of this monitor and waits until another thread notifies threads waiting on this object&rsquo;s monitor to wake up either through a call to the notify method the notifyAll method. The thread then waits until it can re-obtain ownership of the monitor and resumes execution.“</p></blockquote>
+
+<p>3、由于wait函数的特殊意义，应该放在同步语句块中的，这样才有意义。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我对String及String.intern()的理解]]></title>
     <link href="http://www.ilehao.com/blog/2014/03/21/string-intern/"/>
     <updated>2014-03-21T14:18:00+08:00</updated>
     <id>http://www.ilehao.com/blog/2014/03/21/string-intern</id>
-    <content type="html"><![CDATA[<h2>今天我们来聊聊String 及String.intern()</h2>
-
-<h2>先来聊聊String,对于做java开发的我们,string应该是相当熟悉的</h2>
+    <content type="html"><![CDATA[<h4>先来聊聊String,对于做java开发的我们,string应该是相当熟悉的</h4>
 
 <p>1、String不属于8种基本数据类型，String是一个对象,所以String的默认值也是null。但它又有其它对象没有的一些特性，比如它是final类等等。 <br/>
 2、new String()和new String(&ldquo;&rdquo;)都是申明一个新的空字符串，是空串不是null。  <br/>
@@ -74,7 +114,7 @@ System.out.println(str1==str2); // false
 
 <blockquote><p>In JDK 7, interned strings are no longer allocated in the permanent generation of the Java heap, but are instead allocated in the main part of the Java heap (known as the young and old generations), along with the other objects created by the application. This change will result in more data residing in the main Java heap, and less data in the permanent generation, and thus may require heap sizes to be adjusted. Most applications will see only relatively small differences in heap usage due to this change, but larger applications that load many classes or make heavy use of the String.intern() method will see more sign</p></blockquote>
 
-<h2>先对这个方法做个解释##</h2>
+<h2>先对这个方法做个解释</h2>
 
 <blockquote><p>public String intern()
 返回字符串对象的规范化表示形式。
@@ -1353,27 +1393,6 @@ Java代码</p>
 <li><p>  添加 backspace=2</p></li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[快速获取svn的最初分支版本号]]></title>
-    <link href="http://www.ilehao.com/blog/2012/10/28/svn-version/"/>
-    <updated>2012-10-28T11:25:00+08:00</updated>
-    <id>http://www.ilehao.com/blog/2012/10/28/svn-version</id>
-    <content type="html"><![CDATA[<p>在做code review时，我们经常要通过svn去找到分支的最初版本号，然后通过svn di命令进行比较。
-这里写了个简单的脚本去获取svn的最初版本号
-<code> svn log -v --stop-on-copy | grep -B4 "svn copy" | head -1 | awk '{print substr($1,2)}' </code>
-所以如果你想对一个分支进行review时，就相当简单了。
-定义一个shell脚本，我们暂定为review吧。</p>
-
-<pre><code>VERSION=`svn log -v --stop-on-copy $1 | grep -B4 "svn copy" | head -1 | awk '{print substr($1,2)}' 
-svn di -r ${VERSION}:head $1  
-</code></pre>
-
-<p>使用方法：
-1、把review脚本放到的bin（建议放在/usr/local/bin）目录下，这样你就可以在任何地方使用了。
-2、在review脚本后面加上你的svn分支就可以查看修改记录了。例如： review <a href="http://svn.../branches/20120715_155147_1">http://svn&#8230;/branches/20120715_155147_1</a></p>
 ]]></content>
   </entry>
   

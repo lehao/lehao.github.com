@@ -9,7 +9,7 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="今天我们来聊聊String 及String.intern() 先来聊聊String,对于做java开发的我们,string应该是相当熟悉的 1、String不属于8种基本数据类型，String是一个对象,所以String的默认值也是null。但它又有其它对象没有的一些特性，比如它是final类等等 &hellip;">
+  <meta name="description" content="线程调度是指系统为线程分配处理器使用权的过程，主要调度方式有两种： 1、协同式(Cooperative Threads-Scheduling) 线程调度 2、抢占式(Preemptive Threads-Scheduling) 线程调度 抢先式调度又分为：时间片方式和独占方式。在时间片方式下， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,78 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/03/21/string-intern/">理解 String及String.intern()</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/03/27/thread-wait-sleep/">Thread Wait Sleep 区别</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-27T10:19:00+08:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/03/27/thread-wait-sleep/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h4>线程调度是指系统为线程分配处理器使用权的过程，主要调度方式有两种：</h4>
+
+<p>1、协同式(Cooperative Threads-Scheduling) 线程调度 <br/>
+2、抢占式(Preemptive Threads-Scheduling) 线程调度</p>
+
+<p>抢先式调度又分为：时间片方式和独占方式。在时间片方式下，当前活动线程执行完当前时间片后，如果有其他处于就绪状态的相同优先级的线程，系统会将执行权交给其他就绪态的同优先级线程；当前活动线程转入等待执行队列，等待下一个时间片的调度。</p>
+
+<p>在独占方式下，当前活动线程一旦获得执行权，将一直执行下去，直到执行完毕或由于某种原因主动放弃CPU，或者是有一高优先级的线程处于就绪状态。</p>
+
+<h2>Thread.sleep()和　Object.wait()区别</h2>
+
+<h6>共同点：</h6>
+
+<p>1、保持多线程同步的一种方式，可以让程序的调用处阻塞指定的毫秒数，并返回。</p>
+
+<p>2、wait()和sleep()都可以通过interrupt()方法，打断线程的暂停状态 ，从而使线程立刻抛出InterruptedException。 例如线程A希望立即结束线程B，则可以对线程B对应的Thread实例调用interrupt方法。如果此刻线程B正在wait/sleep /join，则线程B会立刻抛出InterruptedException，在catch() {} 中直接return即可安全地结束线程。</p>
+
+<p>需要注意的是，InterruptedException是线程自己从内部抛出的，并不是interrupt()方法抛出的。对某一线程调用 interrupt()时，如果该线程正在执行普通的代码，那么该线程根本就不会抛出InterruptedException。但是，一旦该线程进入到 wait()/sleep()/join()后，就会立刻抛出InterruptedException 。</p>
+
+<h6>不同点：</h6>
+
+<p>1、sleep是Thread类的方法，是线程用来 控制自身流程的，比如有一个要报时的线程，每一秒中打印出一个时间，那么我就需要在print方法前面加上一个sleep让自己每隔一秒执行一次。就像个闹钟一样。
+wait是Object类的方法，用来线程间的通信，这个方法会使当前拥有该对象锁的进程等待知道其他线程调用notify方法时再醒来，不过你也可以给他指定一个时间，自动醒来。这个方法主要是用走不同线程之间的调度的。</p>
+
+<p>2、调用Thread.sleep()方法不会释放锁，而调用Object.wait()方法是会释放当前锁。
+JDK 7 中的解释：</p>
+
+<blockquote><p>public static void sleep(long millis) throws InterruptedException
+Causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds, subject to the precision and accuracy of system timers and schedulers.The thread does not lose ownership of any monitors.</p>
+
+<p>public final void wait() throws InterruptedException
+Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object. In other words, this method behaves exactly as if it simply performs the call wait(0).The current thread must own this object&rsquo;s monitor. The thread releases ownership of this monitor and waits until another thread notifies threads waiting on this object&rsquo;s monitor to wake up either through a call to the notify method the notifyAll method. The thread then waits until it can re-obtain ownership of the monitor and resumes execution.“</p></blockquote>
+
+<p>3、由于wait函数的特殊意义，应该放在同步语句块中的，这样才有意义。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/03/21/string-intern/">我对String及String.intern()的理解</a></h1>
     
     
       <p class="meta">
@@ -96,9 +167,7 @@
   </header>
 
 
-  <div class="entry-content"><h2>今天我们来聊聊String 及String.intern()</h2>
-
-<h2>先来聊聊String,对于做java开发的我们,string应该是相当熟悉的</h2>
+  <div class="entry-content"><h4>先来聊聊String,对于做java开发的我们,string应该是相当熟悉的</h4>
 
 <p>1、String不属于8种基本数据类型，String是一个对象,所以String的默认值也是null。但它又有其它对象没有的一些特性，比如它是final类等等。 <br/>
 2、new String()和new String(&ldquo;&rdquo;)都是申明一个新的空字符串，是空串不是null。  <br/>
@@ -152,7 +221,7 @@ System.out.println(str1==str2); // false
 
 <blockquote><p>In JDK 7, interned strings are no longer allocated in the permanent generation of the Java heap, but are instead allocated in the main part of the Java heap (known as the young and old generations), along with the other objects created by the application. This change will result in more data residing in the main Java heap, and less data in the permanent generation, and thus may require heap sizes to be adjusted. Most applications will see only relatively small differences in heap usage due to this change, but larger applications that load many classes or make heavy use of the String.intern() method will see more sign</p></blockquote>
 
-<h2>先对这个方法做个解释##</h2>
+<h2>先对这个方法做个解释</h2>
 
 <blockquote><p>public String intern()
 返回字符串对象的规范化表示形式。
@@ -1250,77 +1319,6 @@ Dload  Upload   Total   Spent    Left  Speed
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/20/it-feedback/">IT民工的升迁</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-20T09:00:00+08:00" pubdate data-updated="true">Mar 20<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/03/20/it-feedback/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>   1、 真正基础雄厚的人应该是可以将一个常用的基础性知识熟记成诵的人。提到一个基本的名词或话题能够将其来龙去脉解释清楚的人。<br/>
-   2、 我在简历当中最打动面试官的地方恰恰是我利用课余时间及逃课所写的程序，还有利用背考试题的时间所读的课外书。<br/>
-   3、 要想成为优秀的程序员，对于基本算法有深入与精确的理解应该是一项必须的基本技能。<br/>
-   4、 Your time is limited，so don’t waste it living in someone else’s life. Don’t be trapped by dogma which is living with the results of other people’s thinking. Don’t let the noise of other’s opinions drown out you own inner voice. And the most important, have the courage to your heart and intuition. They somehow already know what you truly want to become. Everything else is secondary.（乔帮主）<br/>
-   5、 学知识要注重对本质的掌握，先保证能够将知识点融入到自己的理解里，然后，如果觉得课后作业太弱智，可以尝试新的思路，别一碰到类似的东西就先把以前的搬出来当做“已完成”。<br/>
-   6、 知其然不知其所以然，这是我一贯的问题，NB的公司总是问到我的软肋。<br/>
-   7、 加强实践与执行力。不要欠生活，不要欠工作。出来混，总是要还的，你不会的知识，你懒于想通的东西，总是会在一个必要的时候提醒你、惩罚你。将没搞懂、希望做到的东西，写在纸上、贴在面前，认真实践，当你做到的越来越多的时候，你就会越来越自信，你的层次会提高的。相信我，人与人之间的差距很大，原因在于自我控制力有差距。——本书最真诚、我最喜欢的一句话。<br/>
-   8、 每个人都会在自己的简历上写会C++，但是真正分析过STL源代码的人并不多，每个人都会声称自己精通各类操作系统，但是真正能说清楚Linux系统启动流程的人也不多。<br/>
-   9、 如果一个事情比别人多付出5%的努力，就可能拿到相当于别人200%的回报。<br/>
-   10、我衡量每一件事的标准就是：这件事够不够我写到简历上？如果够，能不能成为闪光点？——这句话对我学习工作都很有启示！<br/>
-   11、世界上没有孤独的高手，却又一堆没人要的半吊子。<br/>
-   12、始终保持着乐观的心态和自信心在求职的过程中是头等重要的。<br/>
-   13、疯狂收集电子书自有乐趣，你会沉浸在这种乐趣之中，而忽略真正有用的东西和真正要做的事情。——这句话对我很有警示作用！<br/>
-   14、坚持写技术博客，进行有效的自我营销。<br/>
-   15、你做什么，而不是你想什么，决定你要成为什么样的人。<br/>
-   16、看一个人，只要看他读的书和见的人。——真TM精辟！<br/>
-   17、今天很残酷，明天更残酷。但后天很美好，大部分人将死在明天晚上，看不到后天的太阳。（马云）<br/>
-   18、如果我不够强，就会被淘汰。<br/>
-   19、有问题当场提出来是最搞笑的做法。——步入职场可能会体会到。<br/>
-   20、人不能停止思考，思考自己，也思考人生，这才是要紧的，也是永远不会晚的。<br/>
-   21、零散与不成系统，是网络知识的特点。这样漫无目的的阅读，容易消耗大量的时间，而且容易令人迷失，往往得不偿失。——告诫自己看书会相对好些。<br/>
-   22、通常程序员都是伴随着企业一起成长的。<br/>
-   23、凡事有计划，认真执行计划，勤记录，常总结。——自知做到这些非易事，但凡做到这都会有大成就，加油吧！<br/>
-   24、在这个世界上生存下来，只能靠自己的拼搏和努力，万万不可把希望寄托在别人的身上。——同感，只有自身强大了，才有家庭、家族的荣光！<br/>
-   25、之所以能够非常快速地进步和成长，非常大的一个原因就是坚持自己认定的方向，持之以恒，坚持不懈，并且坚持参与交流，坚持与人分享。<br/>
-   26、掌握一门技术不是一蹴而就的事，它需要的是严谨的态度、科学的方法和一个必不可少的积累过程。<br/>
-   27、有些事情时该做的，有些事情是不该做的，有些事情时可做可不做的；可做可不做的事情做得越少，获得成功的可能性就越大。——努力所在！<br/>
-   28、看过了，听懂了，并不意味着真正的理解，只有亲身实践过，能将知识积累消化后分享给他人，才会让学到的东西真正了然于胸，随时拿起来都可以运用自如。<br/>
-   29、看书一定要动脑子，蜻蜓点水地看一遍只能收获阅读时的快乐，但真正要用到书中的内容，需要在阅读的时候将精华部分用心牢记才有所得。<br/>
-   30、慢即是快，笨笨地做一遍题是学习的捷径。——提醒自己：欲速则不达！<br/>
-   31、一字不漏的敲入一本书的程序成了我推荐别人学习语言的最好方法。<br/>
-   32、多看书，看好书，并且一定要做笔记。<br/>
-   33、 在我看来，成长路径上有很多的偶然，没人知道在一些关键时候需要什么样的知识储备，所以踏实地多储备一些是好事。以前通过看书、自学，彻底地弄懂的一样知识，会在某个不经意的时候，突然被用到。这时候对当年积累的庆幸和再发现的快乐，就像蓦然回首见到灯火阑珊处的秋水伊人一样，是没法用文字描绘的。——非常赞同！<br/>
-   34、一本好书读两次要胜过两本好书各读一次。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -1347,7 +1345,11 @@ Dload  Upload   Total   Spent    Left  Speed
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/03/21/string-intern/">理解 String及String.intern()</a>
+        <a href="/blog/2014/03/27/thread-wait-sleep/">Thread wait sleep 区别</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/string-intern/">我对String及String.intern()的理解</a>
       </li>
     
       <li class="post">
@@ -1360,10 +1362,6 @@ Dload  Upload   Total   Spent    Left  Speed
     
       <li class="post">
         <a href="/blog/2014/03/04/idp/">2014个人发展计划(IDP)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/21/git-blog-r-and-q/">git blog R&amp;Q</a>
       </li>
     
   </ul>

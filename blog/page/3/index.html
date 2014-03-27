@@ -9,11 +9,8 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="1.安装apache2.0
-sudo apt-get install apache2 当然你也可以用编译的方式安装apache2
-apache：下载地址：http://httpd.apache.org/download.cgi#apache22
-编译前准备:
-sudo apt-get &hellip;">
+  <meta name="description" content="在做code review时，我们经常要通过svn去找到分支的最初版本号，然后通过svn di命令进行比较。
+这里写了个简单的脚本去获取svn的最初版本号 svn log -v --stop-on-copy | grep -B4 "svn copy" | head -1 | awk '{print &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -69,6 +66,56 @@ sudo apt-get &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/28/svn-version/">快速获取svn的最初分支版本号</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-28T11:25:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/28/svn-version/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在做code review时，我们经常要通过svn去找到分支的最初版本号，然后通过svn di命令进行比较。
+这里写了个简单的脚本去获取svn的最初版本号
+<code> svn log -v --stop-on-copy | grep -B4 "svn copy" | head -1 | awk '{print substr($1,2)}' </code>
+所以如果你想对一个分支进行review时，就相当简单了。
+定义一个shell脚本，我们暂定为review吧。</p>
+
+<pre><code>VERSION=`svn log -v --stop-on-copy $1 | grep -B4 "svn copy" | head -1 | awk '{print substr($1,2)}' 
+svn di -r ${VERSION}:head $1  
+</code></pre>
+
+<p>使用方法：
+1、把review脚本放到的bin（建议放在/usr/local/bin）目录下，这样你就可以在任何地方使用了。
+2、在review脚本后面加上你的svn分支就可以查看修改记录了。例如： review <a href="http://svn.../branches/20120715_155147_1">http://svn&#8230;/branches/20120715_155147_1</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -512,7 +559,11 @@ StrictHostKeyChecking no
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/03/21/string-intern/">理解 String及String.intern()</a>
+        <a href="/blog/2014/03/27/thread-wait-sleep/">Thread wait sleep 区别</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/03/21/string-intern/">我对String及String.intern()的理解</a>
       </li>
     
       <li class="post">
@@ -525,10 +576,6 @@ StrictHostKeyChecking no
     
       <li class="post">
         <a href="/blog/2014/03/04/idp/">2014个人发展计划(IDP)</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/02/21/git-blog-r-and-q/">git blog R&amp;Q</a>
       </li>
     
   </ul>

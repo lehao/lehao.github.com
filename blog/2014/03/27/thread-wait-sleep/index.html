@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>2014个人发展计划(IDP) - 乐皓博客</title>
+  <title>Thread wait sleep 区别 - 乐皓博客</title>
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="劣势 JVM底层相关知识了解还不够深入 业务面不够宽，需要拓宽自己的业务 技术架构能力需进一步加强 优势 熟悉开发流程 身边有许多大牛 能力发展规划 深入学习asm,btrace 在seo方面有自己的建树 学习分布式zookeeper
-加强与其它团队的技术和业务交流 执行计划 任务
-计划 &hellip;">
+  <meta name="description" content="线程调度是指系统为线程分配处理器使用权的过程，主要调度方式有两种： 1、协同式(Cooperative Threads-Scheduling) 线程调度 2、抢占式(Preemptive Threads-Scheduling) 线程调度 抢先式调度又分为：时间片方式和独占方式。在时间片方式下， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.ilehao.com/blog/2014/03/04/idp/">
+  <link rel="canonical" href="http://www.ilehao.com/blog/2014/03/27/thread-wait-sleep/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -70,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">2014个人发展计划(IDP)</h1>
+      <h1 class="entry-title">Thread Wait Sleep 区别</h1>
     
     
       <p class="meta">
@@ -86,7 +84,7 @@
   
 
 
-<time datetime="2014-03-04T10:24:00+08:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
+<time datetime="2014-03-27T10:19:00+08:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -95,54 +93,40 @@
   </header>
 
 
-<div class="entry-content"><h2>劣势</h2>
+<div class="entry-content"><h4>线程调度是指系统为线程分配处理器使用权的过程，主要调度方式有两种：</h4>
 
-<blockquote><p>JVM底层相关知识了解还不够深入 <br/>
-业务面不够宽，需要拓宽自己的业务 <br/>
-技术架构能力需进一步加强</p></blockquote>
+<p>1、协同式(Cooperative Threads-Scheduling) 线程调度 <br/>
+2、抢占式(Preemptive Threads-Scheduling) 线程调度</p>
 
-<h2>优势</h2>
+<p>抢先式调度又分为：时间片方式和独占方式。在时间片方式下，当前活动线程执行完当前时间片后，如果有其他处于就绪状态的相同优先级的线程，系统会将执行权交给其他就绪态的同优先级线程；当前活动线程转入等待执行队列，等待下一个时间片的调度。</p>
 
-<blockquote><p>熟悉开发流程 <br/>
-身边有许多大牛</p></blockquote>
+<p>在独占方式下，当前活动线程一旦获得执行权，将一直执行下去，直到执行完毕或由于某种原因主动放弃CPU，或者是有一高优先级的线程处于就绪状态。</p>
 
-<h2>能力发展规划</h2>
+<h2>Thread.sleep()和　Object.wait()区别</h2>
 
-<blockquote><p>深入学习asm,btrace <br/>
-在seo方面有自己的建树 <br/>
-学习分布式zookeeper<br/>
-加强与其它团队的技术和业务交流</p></blockquote>
+<h6>共同点：</h6>
 
-<h2>执行计划</h2>
+<p>1、保持多线程同步的一种方式，可以让程序的调用处阻塞指定的毫秒数，并返回。</p>
 
-<blockquote><p><table border="1">
-<thead>
-<tr>
-<th>任务</th>
-<th align="left">计划</th>
-<th align="center">action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>深入学习asm,btace</td>
-<td align="left">3月-4月</td>
-<td align="center"> 深入源代码，了解其原理，能总结出自己的见解和优化方案 </td>
-</tr>
-<tr>
-<td>学习zookeeper</td>
-<td align="left">4月-9月</td>
-<td align="center"> </td>
-</tr>
-<tr>
-<td>读完SEO实战密码</td>
-<td align="left">4月-9月</td>
-<td align="center">   </td>
-</tr>
-</tbody>
-</table></p></blockquote>
+<p>2、wait()和sleep()都可以通过interrupt()方法，打断线程的暂停状态 ，从而使线程立刻抛出InterruptedException。 例如线程A希望立即结束线程B，则可以对线程B对应的Thread实例调用interrupt方法。如果此刻线程B正在wait/sleep /join，则线程B会立刻抛出InterruptedException，在catch() {} 中直接return即可安全地结束线程。</p>
 
-<p><font color="red" size="5">以上请大家监督</font></p>
+<p>需要注意的是，InterruptedException是线程自己从内部抛出的，并不是interrupt()方法抛出的。对某一线程调用 interrupt()时，如果该线程正在执行普通的代码，那么该线程根本就不会抛出InterruptedException。但是，一旦该线程进入到 wait()/sleep()/join()后，就会立刻抛出InterruptedException 。</p>
+
+<h6>不同点：</h6>
+
+<p>1、sleep是Thread类的方法，是线程用来 控制自身流程的，比如有一个要报时的线程，每一秒中打印出一个时间，那么我就需要在print方法前面加上一个sleep让自己每隔一秒执行一次。就像个闹钟一样。
+wait是Object类的方法，用来线程间的通信，这个方法会使当前拥有该对象锁的进程等待知道其他线程调用notify方法时再醒来，不过你也可以给他指定一个时间，自动醒来。这个方法主要是用走不同线程之间的调度的。</p>
+
+<p>2、调用Thread.sleep()方法不会释放锁，而调用Object.wait()方法是会释放当前锁。
+JDK 7 中的解释：</p>
+
+<blockquote><p>public static void sleep(long millis) throws InterruptedException
+Causes the currently executing thread to sleep (temporarily cease execution) for the specified number of milliseconds, subject to the precision and accuracy of system timers and schedulers.The thread does not lose ownership of any monitors.</p>
+
+<p>public final void wait() throws InterruptedException
+Causes the current thread to wait until another thread invokes the notify() method or the notifyAll() method for this object. In other words, this method behaves exactly as if it simply performs the call wait(0).The current thread must own this object&rsquo;s monitor. The thread releases ownership of this monitor and waits until another thread notifies threads waiting on this object&rsquo;s monitor to wake up either through a call to the notify method the notifyAll method. The thread then waits until it can re-obtain ownership of the monitor and resumes execution.“</p></blockquote>
+
+<p>3、由于wait函数的特殊意义，应该放在同步语句块中的，这样才有意义。</p>
 </div>
 
 
@@ -165,7 +149,7 @@
   
 
 
-<time datetime="2014-03-04T10:24:00+08:00" pubdate data-updated="true">Mar 4<span>th</span>, 2014</time>
+<time datetime="2014-03-27T10:19:00+08:00" pubdate data-updated="true">Mar 27<span>th</span>, 2014</time>
       
 
 
@@ -180,10 +164,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2014/02/21/git-blog-r-and-q/" title="Previous Post: git blog R&amp;Q">&laquo; git blog R&amp;Q</a>
+        <a class="basic-alignment left" href="/blog/2014/03/21/string-intern/" title="Previous Post: 我对String及String.intern()的理解">&laquo; 我对String及String.intern()的理解</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2014/03/18/special-character/" title="Next Post: 特殊字符的含义">特殊字符的含义 &raquo;</a>
       
     </p>
   </footer>
@@ -284,8 +266,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.ilehao.com/blog/2014/03/04/idp/';
-        var disqus_url = 'http://www.ilehao.com/blog/2014/03/04/idp/';
+        var disqus_identifier = 'http://www.ilehao.com/blog/2014/03/27/thread-wait-sleep/';
+        var disqus_url = 'http://www.ilehao.com/blog/2014/03/27/thread-wait-sleep/';
         var disqus_script = 'embed.js';
       
     (function () {
