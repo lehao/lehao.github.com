@@ -4,7 +4,7 @@
   <title><![CDATA[乐皓博客]]></title>
   <link href="http://www.ilehao.com/atom.xml" rel="self"/>
   <link href="http://www.ilehao.com/"/>
-  <updated>2014-03-27T10:51:21+08:00</updated>
+  <updated>2014-03-27T10:52:55+08:00</updated>
   <id>http://www.ilehao.com/</id>
   <author>
     <name><![CDATA[乐皓]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Thread wait sleep 区别]]></title>
+    <title type="html"><![CDATA[Thread.sleep()与Object.wait()的区别]]></title>
     <link href="http://www.ilehao.com/blog/2014/03/27/thread-wait-sleep/"/>
     <updated>2014-03-27T10:19:00+08:00</updated>
     <id>http://www.ilehao.com/blog/2014/03/27/thread-wait-sleep</id>
