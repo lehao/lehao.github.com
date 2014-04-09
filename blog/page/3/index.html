@@ -9,8 +9,7 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="在做code review时，我们经常要通过svn去找到分支的最初版本号，然后通过svn di命令进行比较。
-这里写了个简单的脚本去获取svn的最初版本号 svn log -v --stop-on-copy | grep -B4 "svn copy" | head -1 | awk '{print &hellip;">
+  <meta name="description" content="解决办法： 修改 /etc/vim/vim.tiny , 将 set compatible 改成 set nocompatible 添加 backspace=2 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -66,6 +65,52 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/28/vim-invalid/">Vim 失效的解决办法</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-28T11:25:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/28/vim-invalid/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>解决办法：</p>
+
+<p>  修改 /etc/vim/vim.tiny , 将</p>
+
+<ol>
+<li><p>  set compatible 改成 set nocompatible</p></li>
+<li><p>  添加 backspace=2</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -559,6 +604,10 @@ StrictHostKeyChecking no
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/04/09/mod-jk-vs-mod-proxy/">mod_jk VS mod_proxy</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/03/27/thread-wait-sleep/">Thread.sleep()与Object.wait()的区别</a>
       </li>
     
@@ -572,10 +621,6 @@ StrictHostKeyChecking no
     
       <li class="post">
         <a href="/blog/2014/03/18/special-character/">特殊字符的含义</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/04/idp/">2014个人发展计划(IDP)</a>
       </li>
     
   </ul>

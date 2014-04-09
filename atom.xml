@@ -4,7 +4,7 @@
   <title><![CDATA[乐皓博客]]></title>
   <link href="http://www.ilehao.com/atom.xml" rel="self"/>
   <link href="http://www.ilehao.com/"/>
-  <updated>2014-03-27T10:52:55+08:00</updated>
+  <updated>2014-04-09T10:15:06+08:00</updated>
   <id>http://www.ilehao.com/</id>
   <author>
     <name><![CDATA[乐皓]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[mod_jk VS mod_proxy]]></title>
+    <link href="http://www.ilehao.com/blog/2014/04/09/mod-jk-vs-mod-proxy/"/>
+    <updated>2014-04-09T09:32:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2014/04/09/mod-jk-vs-mod-proxy</id>
+    <content type="html"><![CDATA[<p>mod_jk VS mod_proxy</p>
+
+<p>mod_proxy</p>
+
+<pre><code>* Pros:
+      o No need for a separate module compilation and maintenance. mod_proxy,
+    mod_proxy_http, mod_proxy_ajp and mod_proxy_balancer comes as part of 
+    standard Apache 2.2+ distribution
+      o Ability to use http https or AJP protocols, even within the same 
+    balancer.
+* Cons:
+      o mod_proxy_ajp does not support large 8K+ packet sizes.
+      o Basic load balancer
+      o Does not support Domain model clustering
+</code></pre>
+
+<p>mod_jk</p>
+
+<pre><code>* Pros:
+      o Advanced load balancer
+      o Advanced node failure detection
+      o Support for large AJP packet sizes
+* Cons:
+      o Need to build and maintain a separate module
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Thread.sleep()与Object.wait()的区别]]></title>
@@ -1376,23 +1409,6 @@ Java代码</p>
     return out.toString();  
 }  
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[vim 失效的解决办法]]></title>
-    <link href="http://www.ilehao.com/blog/2012/10/28/vim-invalid/"/>
-    <updated>2012-10-28T11:25:00+08:00</updated>
-    <id>http://www.ilehao.com/blog/2012/10/28/vim-invalid</id>
-    <content type="html"><![CDATA[<p>解决办法：</p>
-
-<p>  修改 /etc/vim/vim.tiny , 将</p>
-
-<ol>
-<li><p>  set compatible 改成 set nocompatible</p></li>
-<li><p>  添加 backspace=2</p></li>
-</ol>
-
 ]]></content>
   </entry>
   
