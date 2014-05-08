@@ -9,7 +9,7 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="解决办法： 修改 /etc/vim/vim.tiny , 将 set compatible 改成 set nocompatible 添加 backspace=2 ">
+  <meta name="description" content="最近工作中碰到需要解析超大XML的问题（XML文件超过1G），并且在处理中还碰到无法解析的异常(org.xml.sax.SAXParseException: An invalid XML character (Unicode: 0x19) was found in the element &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,109 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/28/parse-big-xml-file/">如何解析超大XML文件</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-28T11:26:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/28/parse-big-xml-file/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近工作中碰到需要解析超大XML的问题（XML文件超过1G），并且在处理中还碰到无法解析的异常(org.xml.sax.SAXParseException: An invalid XML character (Unicode: 0x19) was found in the element content of the document)。
+现在把处理方式和代码分享出来。
+Java代码</p>
+
+<pre><code>try {  
+       SAXReader saxReader = new SAXReader();  
+       saxReader.addHandler("/list/XXXX", new ElementHandler() {  
+           public void onStart(ElementPath path) {  
+                         // do nothing here...  
+            }  
+
+            public void onEnd(ElementPath path) {  
+         // process a ROW element  
+        Element row = path.getCurrent();  
+        Document document = row.getDocument();  
+        System.out.println(document.asXML());  
+        row.detach();  
+                    }  
+                   });  
+        }  
+
+        final File file = new File(getFileName(language, isProduct));  
+        saxReader.setErrorHandler(new ErrorHandler() {  
+        public void error(SAXParseException e) {  
+        System.out.println("file:" + file.getName() + "  ERROR: " + e);  
+        }  
+        public void fatalError(SAXParseException e) {  
+        System.out.println("file:" + file.getName() + "  FATAL: " + e);  
+        }  
+        public void warning(SAXParseException e) {  
+         System.out.println("file:" + file.getName() + "  WARNING: " + e);  
+        }  
+        });  
+
+        InputStreamReader source = new InputStreamReader(new FileInputStream(file));  
+        saxReader.read(source);  
+    } catch (DocumentException e) {  
+        logger.error("error", e);  
+        return;  
+    } catch (FileNotFoundException e) {  
+        logger.error(" error", e);  
+        return;  
+}  
+</code></pre>
+
+<p>如果XML文件中包含了一些不可见的无效字符，就会导致JDom在解析该文件是抛出异常(An invalid XML character Unicode: 0x19 etc)。我们可以通过一些xml工具来保证，如果在xml文件出现了，也可以通过下面这个方法来过滤。
+Java代码</p>
+
+<pre><code>public static String stripNonValidXMLCharacters(String in) {  
+    StringBuffer out = new StringBuffer(); // Used to hold the output.  
+    char current; // Used to reference the current character.  
+
+    if (in == null || ("".equals(in)))  
+    return ""; // vacancy test.  
+    for (int i = 0; i &lt; in.length(); i++) {  
+    current = in.charAt(i); // NOTE: No IndexOutOfBoundsException caught  
+                // here; it should not happen.  
+    if ((current == 0x9) || (current == 0xA) || (current == 0xD)  
+        || ((current &gt;= 0x20) &amp;&amp; (current &lt;= 0xD7FF))  
+        || ((current &gt;= 0xE000) &amp;&amp; (current &lt;= 0xFFFD))  
+        || ((current &gt;= 0x10000) &amp;&amp; (current &lt;= 0x10FFFF)))  
+        out.append(current);  
+    }  
+    return out.toString();  
+}  
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -604,6 +707,10 @@ StrictHostKeyChecking no
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/05/08/server-performance/">服务器性能</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/04/09/mod-jk-vs-mod-proxy/">mod_jk VS mod_proxy</a>
       </li>
     
@@ -617,10 +724,6 @@ StrictHostKeyChecking no
     
       <li class="post">
         <a href="/blog/2014/03/19/linux-apache-grep-log/">linux下grep分析APACHE 服务器日志 命令集合</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/18/special-character/">特殊字符的含义</a>
       </li>
     
   </ul>

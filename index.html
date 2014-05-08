@@ -9,7 +9,10 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="mod_jk VS mod_proxy mod_proxy * Pros: o No need for a separate module compilation and maintenance. mod_proxy, mod_proxy_http, mod_proxy_ajp and &hellip;">
+  <meta name="description" content="为什么要去做性能分析呢? • 降低IT支出 - 找出资源浪费的地区，做出调整，少花钱多办事
+• 建立可扩展的体系结构 - 理解系统限制并发展周边系统
+• 解决问题 - 找出瓶颈和延迟的异常值 公共的性能指标： io，cpu，load，rt，qps 分析工具： 基础工具： • uptime
+• &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +68,97 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/05/08/server-performance/">服务器性能</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-08T09:58:00+08:00" pubdate data-updated="true">May 8<span>th</span>, 2014</time>
+        
+         | <a href="/blog/2014/05/08/server-performance/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>为什么要去做性能分析呢?</h2>
+
+<pre><code>• 降低IT支出 - 找出资源浪费的地区，做出调整，少花钱多办事
+• 建立可扩展的体系结构 - 理解系统限制并发展周边系统
+• 解决问题 - 找出瓶颈和延迟的异常值
+</code></pre>
+
+<h2>公共的性能指标：</h2>
+
+<pre><code>io，cpu，load，rt，qps
+</code></pre>
+
+<h2>分析工具：</h2>
+
+<p><img src="/resources/Command_Distribution.PNG" alt="Alt text" /></p>
+
+<h3>基础工具：</h3>
+
+<pre><code>• uptime
+• top or htop
+• mpstat
+• iostat
+• vmstat
+• free
+• ping
+• nicstat
+• dstat
+</code></pre>
+
+<h3>中级工具：</h3>
+
+<pre><code>• sar
+• netstat
+• pidstat
+• strace
+• tcpdump
+• blktrace
+• iotop
+• slabtop
+• sysctl
+• /proc
+</code></pre>
+
+<h3>高级工具：</h3>
+
+<pre><code>• perf
+• DTrace
+• SystemTap
+• and more ...
+</code></pre>
+
+<h2>参考资料：</h2>
+
+<p><a href="/resources/linux-performance-analysis-and-tools.pdf">linux-performance-analysis-and-tools.pdf</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -794,152 +888,6 @@ git remote add -t master -f origin https://github.com/username/username.github.i
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/08/30/java-se-8-lambda/">Java SE 8: Lambda 表达式</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-08-30T09:04:00+08:00" pubdate data-updated="true">Aug 30<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/08/30/java-se-8-lambda/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Java SE 8在6月13的版本中已经完全了全部的功能。在这些新的功能中，lambda表达式是推动该版本发布的最重要新特性。因为Java第一次尝试引入函数式编程的相关内容。社区对于lambda表达式也期待已久。Lambda表达式的相关内容在JSR 335中定义，本文的内容基于最新的规范和JDK 8 Build b94。 开发环境使用的是Eclipse。</p>
-
-<p>Lambda表达式</p>
-
-<p>要理解lambda表达式，首先要了解的是函数式接口（functional interface）。简单来说，函数式接口是只包含一个抽象方法的接口。比如Java标准库中的java.lang.Runnable和java.util.Comparator都是典型的函数式接口。对于函数式接口，除了可以使用Java中标准的方法来创建实现对象之外，还可以使用lambda表达式来创建实现对象。这可以在很大程度上简化代码的实现。在使用lambda表达式时，只需要提供形式参数和方法体。由于函数式接口只有一个抽象方法，所以通过lambda表达式声明的方法体就肯定是这个唯一的抽象方法的实现，而且形式参数的类型可以根据方法的类型声明进行自动推断。</p>
-
-<p>以Runnable接口为例来进行说明，传统的创建一个线程并运行的方式如下所示：</p>
-
-<pre><code>public void runThread() {
-    new Thread(new Runnable() {
-    public void run() {
-        System.out.println("Run!");
-    }
-    }).start();
-}
-</code></pre>
-
-<p>在上面的代码中，首先需要创建一个匿名内部类实现Runnable接口，还需要实现接口中的run方法。如果使用lambda表达式来完成同样的功能，得到的代码非常简洁，如下面所示：</p>
-
-<pre><code>public void runThreadUseLambda() {
-    new Thread(() -&gt; {
-    System.out.println("Run!");
-    }).start();
-}
-</code></pre>
-
-<p>相对于传统的方式，lambda表达式在两个方面进行了简化：首先是Runnable接口的声明，这可以通过对上下文环境进行推断来得出；其次是对run方法的实现，因为函数式接口中只包含一个需要实现的方法。</p>
-
-<p>Lambda表达式的声明方式比较简单，由形式参数和方法体两部分组成，中间通过“->”分隔。形式参数不需要包含类型声明，可以进行自动推断。当然在某些情况下，形式参数的类型声明是不可少的。方法体则可以是简单的表达式或代码块。</p>
-
-<p>比如把一个整数列表按照降序排列可以用下面的代码来简洁实现：</p>
-
-<pre><code>Collections.sort(list, (x, y) -&gt; y - x);
-</code></pre>
-
-<p>Lambda表达式“(x, y) &ndash;> y &ndash; x“实现了java.util.Comparator接口。</p>
-
-<p>在Java SE 8之前的标准库中包含的函数式接口并不多。Java SE 8增加了java.util.function包，里面都是可以在开发中使用的函数式接口。开发人员也可以创建新的函数式接口。最好在接口上使用注解@FunctionalInterface进行声明，以免团队的其他人员错误地往接口中添加新的方法。</p>
-
-<p>下面的代码使用函数式接口java.util.function.Function实现的对列表进行map操作的方法。从代码中可以看到，如果尽可能的使用函数式接口，则代码使用起来会非常简洁。</p>
-
-<pre><code>public class CollectionUtils {
-    public static  List map(List input, Function processor) {
-    ArrayList result = new ArrayList();
-    for (T obj : input) {
-        result.add(processor.apply(obj));
-    }
-    return result;
-    }
-
-    public static void main(String[] args) {
-    List input = Arrays.asList(new String[] {"apple", "orange", "pear"});
-    List lengths = CollectionUtils.map(input, (String v) -&gt; v.length());
-    List uppercases = CollectionUtils.map(input, (String v) -&gt; v.toUpperCase());
-    }
-}
-</code></pre>
-
-<p>方法和构造方法引用</p>
-
-<p>方法引用可以在不调用某个方法的情况下引用一个方法。构造方法引用可以在不创建对象的情况下引用一个构造方法。方法引用是另外一种实现函数式接口的方法。在某些情况下，方法引用可以进一步简化代码。比如下面的代码中，第一个forEach方法调用使用的是lambda表达式，第二个使用的是方法引用。两者作用相同，不过使用方法引用的做法更加简洁。</p>
-
-<pre><code>List input = Arrays.asList(new String[] {"apple", "orange", "pear"});
-input.forEach((v) -&gt; System.out.println(v));
-input.forEach(System.out::println);
-</code></pre>
-
-<p>构造方法可以通过名称“new”来进行引用，如下面的代码所示：</p>
-
-<pre><code>List dateValues = Arrays.asList(new Long[] {0L, 1000L});
-List dates = CollectionUtils.map(dateValues, Date::new);
-</code></pre>
-
-<p>接口的默认方法</p>
-
-<p>Java开发中所推荐的实践是面向接口而不是实现来编程。接口作为不同组件之间的契约，使得接口的实现可以不断地演化。不过接口本身的演化则比较困难。当接口发生变化时，该接口的所有实现类都需要做出相应的修改。如果在新版本中对接口进行了修改，会导致早期版本的代码无法运行。Java对于接口更新的限制过于严格。在代码演化的过程中，一般所遵循的原则是不删除或修改已有的功能，而是添加新的功能作为替代。已有代码可以继续使用原有的功能，而新的代码则可以使用新的功能。但是这种更新方式对于接口是不适用的，因为往一个接口中添加新的方法也会导致已有代码无法运行。</p>
-
-<p>接口的默认方法的主要目标之一是解决接口的演化问题。当往一个接口中添加新的方法时，可以提供该方法的默认实现。对于已有的接口使用者来说，代码可以继续运行。新的代码则可以使用该方法，也可以覆写默认的实现。</p>
-
-<p>考虑下面的一个简单的进行货币转换的接口。该接口的实现方式可能是调用第三方提供的服务来完成实际的转换操作。</p>
-
-<pre><code>public interface CurrencyConverter {
-    BigDecimal convert(Currency from, Currency to, BigDecimal amount);
-}
-</code></pre>
-
-<p>该接口在开发出来之后，在应用中得到了使用。在后续的版本更新中，第三方服务提供了新的批量处理的功能，允许在一次请求中同时转换多个数值。最直接的做法是在原有的接口中添加一个新的方法来支持批量处理，不过这样会造成已有的代码无法运行。而默认方法则可以很好的解决这个问题。使用默认方法的新接口如下所示。</p>
-
-<pre><code>public interface CurrencyConverter {
-    BigDecimal convert(Currency from, Currency to, BigDecimal amount);
-
-    default List convert(Currency from, Currency to, List amounts) {
-    List result = new ArrayList();
-        for (BigDecimal amount : amounts) {
-        result.add(convert(from, to, amount));
-        }
-        return result;
-    }
-}
-</code></pre>
-
-<p>新添加的方法使用default关键词来修饰，并可以有自己的方法体。</p>
-
-<p>默认方法的另外一个作用是实现行为的多继承。Java语言只允许类之间的单继承关系，但是一个类可以实现多个接口。在默认方法引入之后，接口中不仅可以包含变量和方法声明，还可以包含方法体，也就是行为。通过实现多个接口，一个Java类实际上可以获得来自不同接口的行为。这种功能类似于JavaScript等其他语言中可见的“混入类”（mixin）。实际上，Java中一直存在“常量接口（Constant Interface）”的用法。常量接口中只包含常量的声明。通过实现这样的接口，就可以直接引用这些常量。通过默认方法，可以创建出类似的帮助接口，即接口中包含的都是通过默认方法实现的帮助方法。比如创建一个StringUtils接口包含各种与字符串操作相关的默认方法。通过继承该接口就可以直接使用这些方法。</p>
-
-<p>Java SE 8标准库已经使用默认方法来对集合类中的接口进行更新。比如java.util.Collection接口中新增的默认方法removeIf可以删除集合中满足某些条件的元素。还有java.lang.Iterable接口中新增的默认方法forEach可以遍历集合中的元素，并执行一些操作。这些新增的默认方法大多使用了java.util.function包中的函数式接口，因此可以使用lambda表达式来非常简洁的进行操作。</p>
-
-<p>Lambda表达式是Java SE 8在提高开发人员生产效率上的一个重大改进。通过语法上的改进，可以减少开发人员需要编写和维护的代码数量。<br>
-转载：<a href="http://www.infoq.com/cn/articles/Java-se-8-lambda">http://www.infoq.com/cn/articles/Java-se-8-lambda</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -966,6 +914,10 @@ List dates = CollectionUtils.map(dateValues, Date::new);
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/05/08/server-performance/">服务器性能</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/04/09/mod-jk-vs-mod-proxy/">mod_jk VS mod_proxy</a>
       </li>
     
@@ -979,10 +931,6 @@ List dates = CollectionUtils.map(dateValues, Date::new);
     
       <li class="post">
         <a href="/blog/2014/03/19/linux-apache-grep-log/">linux下grep分析APACHE 服务器日志 命令集合</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/18/special-character/">特殊字符的含义</a>
       </li>
     
   </ul>

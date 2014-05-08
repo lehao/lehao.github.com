@@ -5,11 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>super-awesome - 乐皓博客</title>
+  <title>服务器性能 - 乐皓博客</title>
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="Super-awesome Oct 10th, 2012 Oct 10th, 2012 Comments Please enable JavaScript to view the comments powered by Disqus. About Me java程序员，老猿人，孩子他爸 爱篮球， &hellip;">
+  <meta name="description" content="为什么要去做性能分析呢? • 降低IT支出 - 找出资源浪费的地区，做出调整，少花钱多办事
+• 建立可扩展的体系结构 - 理解系统限制并发展周边系统
+• 解决问题 - 找出瓶颈和延迟的异常值 公共的性能指标： io，cpu，load，rt，qps 分析工具： 基础工具： • uptime
+• &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.ilehao.com/super-awesome/">
+  <link rel="canonical" href="http://www.ilehao.com/blog/2014/05/08/server-performance/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,32 +67,15 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Super-awesome</h1>
-    <p class="meta">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-10T16:28:00+08:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time></p>
-  </header>
-  
-  
-
-  
-    <footer>
+    
+      <h1 class="entry-title">服务器性能</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
@@ -101,19 +87,111 @@
   
 
 
-<time datetime="2012-10-10T16:28:00+08:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
+<time datetime="2014-05-08T09:58:00+08:00" pubdate data-updated="true">May 8<span>th</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><h2>为什么要去做性能分析呢?</h2>
+
+<pre><code>• 降低IT支出 - 找出资源浪费的地区，做出调整，少花钱多办事
+• 建立可扩展的体系结构 - 理解系统限制并发展周边系统
+• 解决问题 - 找出瓶颈和延迟的异常值
+</code></pre>
+
+<h2>公共的性能指标：</h2>
+
+<pre><code>io，cpu，load，rt，qps
+</code></pre>
+
+<h2>分析工具：</h2>
+
+<p><img src="/resources/Command_Distribution.PNG" alt="Alt text" /></p>
+
+<h3>基础工具：</h3>
+
+<pre><code>• uptime
+• top or htop
+• mpstat
+• iostat
+• vmstat
+• free
+• ping
+• nicstat
+• dstat
+</code></pre>
+
+<h3>中级工具：</h3>
+
+<pre><code>• sar
+• netstat
+• pidstat
+• strace
+• tcpdump
+• blktrace
+• iotop
+• slabtop
+• sysctl
+• /proc
+</code></pre>
+
+<h3>高级工具：</h3>
+
+<pre><code>• perf
+• DTrace
+• SystemTap
+• and more ...
+</code></pre>
+
+<h2>参考资料：</h2>
+
+<p><a href="/resources/linux-performance-analysis-and-tools.pdf">linux-performance-analysis-and-tools.pdf</a></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
+  
+
+<span class="byline author vcard">Posted by <span class="fn">乐皓</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-05-08T09:58:00+08:00" pubdate data-updated="true">May 8<span>th</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2014/04/09/mod-jk-vs-mod-proxy/" title="Previous Post: mod_jk VS mod_proxy">&laquo; mod_jk VS mod_proxy</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
   <section>
@@ -211,8 +289,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.ilehao.com/super-awesome/index.html';
-        var disqus_url = 'http://www.ilehao.com/super-awesome/index.html';
+        var disqus_identifier = 'http://www.ilehao.com/blog/2014/05/08/server-performance/';
+        var disqus_url = 'http://www.ilehao.com/blog/2014/05/08/server-performance/';
         var disqus_script = 'embed.js';
       
     (function () {

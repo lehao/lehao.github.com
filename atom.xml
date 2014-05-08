@@ -4,7 +4,7 @@
   <title><![CDATA[乐皓博客]]></title>
   <link href="http://www.ilehao.com/atom.xml" rel="self"/>
   <link href="http://www.ilehao.com/"/>
-  <updated>2014-04-09T10:15:06+08:00</updated>
+  <updated>2014-05-08T10:20:37+08:00</updated>
   <id>http://www.ilehao.com/</id>
   <author>
     <name><![CDATA[乐皓]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[服务器性能]]></title>
+    <link href="http://www.ilehao.com/blog/2014/05/08/server-performance/"/>
+    <updated>2014-05-08T09:58:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2014/05/08/server-performance</id>
+    <content type="html"><![CDATA[<h2>为什么要去做性能分析呢?</h2>
+
+<pre><code>• 降低IT支出 - 找出资源浪费的地区，做出调整，少花钱多办事
+• 建立可扩展的体系结构 - 理解系统限制并发展周边系统
+• 解决问题 - 找出瓶颈和延迟的异常值
+</code></pre>
+
+<h2>公共的性能指标：</h2>
+
+<pre><code>io，cpu，load，rt，qps
+</code></pre>
+
+<h2>分析工具：</h2>
+
+<p><img src="http://www.ilehao.com/resources/Command_Distribution.PNG" alt="Alt text" /></p>
+
+<h3>基础工具：</h3>
+
+<pre><code>• uptime
+• top or htop
+• mpstat
+• iostat
+• vmstat
+• free
+• ping
+• nicstat
+• dstat
+</code></pre>
+
+<h3>中级工具：</h3>
+
+<pre><code>• sar
+• netstat
+• pidstat
+• strace
+• tcpdump
+• blktrace
+• iotop
+• slabtop
+• sysctl
+• /proc
+</code></pre>
+
+<h3>高级工具：</h3>
+
+<pre><code>• perf
+• DTrace
+• SystemTap
+• and more ...
+</code></pre>
+
+<h2>参考资料：</h2>
+
+<p><a href="http://www.ilehao.com/resources/linux-performance-analysis-and-tools.pdf">linux-performance-analysis-and-tools.pdf</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[mod_jk VS mod_proxy]]></title>
@@ -1121,7 +1183,7 @@ Tair持久化适用的场景
 
 <p>结构图：</p>
 
-<p><img src="../images/blogImgs/rtb.jpg" alt="Alt text" /></p>
+<p><img src="http://www.ilehao.com/images/blogImgs/rtb.jpg" alt="Alt text" /></p>
 ]]></content>
   </entry>
   
@@ -1335,80 +1397,6 @@ python setup.py sdist upload
 <li>如果服务器管理员配置虚拟机参数时，只考虑实际内存设置 -Xmx等参数信息，而忽略掉了直接内存，使得各个内存区域的总和大于物理内存限制(包括物理上的和操作系统级的限制)，从而会导致动态扩展时出现OutOfMemoryError异常</li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[如何解析超大XML文件]]></title>
-    <link href="http://www.ilehao.com/blog/2012/10/28/parse-big-xml-file/"/>
-    <updated>2012-10-28T11:26:00+08:00</updated>
-    <id>http://www.ilehao.com/blog/2012/10/28/parse-big-xml-file</id>
-    <content type="html"><![CDATA[<p>最近工作中碰到需要解析超大XML的问题（XML文件超过1G），并且在处理中还碰到无法解析的异常(org.xml.sax.SAXParseException: An invalid XML character (Unicode: 0x19) was found in the element content of the document)。
-现在把处理方式和代码分享出来。
-Java代码</p>
-
-<pre><code>try {  
-       SAXReader saxReader = new SAXReader();  
-       saxReader.addHandler("/list/XXXX", new ElementHandler() {  
-           public void onStart(ElementPath path) {  
-                         // do nothing here...  
-            }  
-
-            public void onEnd(ElementPath path) {  
-         // process a ROW element  
-        Element row = path.getCurrent();  
-        Document document = row.getDocument();  
-        System.out.println(document.asXML());  
-        row.detach();  
-                    }  
-                   });  
-        }  
-
-        final File file = new File(getFileName(language, isProduct));  
-        saxReader.setErrorHandler(new ErrorHandler() {  
-        public void error(SAXParseException e) {  
-        System.out.println("file:" + file.getName() + "  ERROR: " + e);  
-        }  
-        public void fatalError(SAXParseException e) {  
-        System.out.println("file:" + file.getName() + "  FATAL: " + e);  
-        }  
-        public void warning(SAXParseException e) {  
-         System.out.println("file:" + file.getName() + "  WARNING: " + e);  
-        }  
-        });  
-
-        InputStreamReader source = new InputStreamReader(new FileInputStream(file));  
-        saxReader.read(source);  
-    } catch (DocumentException e) {  
-        logger.error("error", e);  
-        return;  
-    } catch (FileNotFoundException e) {  
-        logger.error(" error", e);  
-        return;  
-}  
-</code></pre>
-
-<p>如果XML文件中包含了一些不可见的无效字符，就会导致JDom在解析该文件是抛出异常(An invalid XML character Unicode: 0x19 etc)。我们可以通过一些xml工具来保证，如果在xml文件出现了，也可以通过下面这个方法来过滤。
-Java代码</p>
-
-<pre><code>public static String stripNonValidXMLCharacters(String in) {  
-    StringBuffer out = new StringBuffer(); // Used to hold the output.  
-    char current; // Used to reference the current character.  
-
-    if (in == null || ("".equals(in)))  
-    return ""; // vacancy test.  
-    for (int i = 0; i &lt; in.length(); i++) {  
-    current = in.charAt(i); // NOTE: No IndexOutOfBoundsException caught  
-                // here; it should not happen.  
-    if ((current == 0x9) || (current == 0xA) || (current == 0xD)  
-        || ((current &gt;= 0x20) &amp;&amp; (current &lt;= 0xD7FF))  
-        || ((current &gt;= 0xE000) &amp;&amp; (current &lt;= 0xFFFD))  
-        || ((current &gt;= 0x10000) &amp;&amp; (current &lt;= 0x10FFFF)))  
-        out.append(current);  
-    }  
-    return out.toString();  
-}  
-</code></pre>
 ]]></content>
   </entry>
   
