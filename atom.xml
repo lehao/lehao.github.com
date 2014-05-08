@@ -4,7 +4,7 @@
   <title><![CDATA[乐皓博客]]></title>
   <link href="http://www.ilehao.com/atom.xml" rel="self"/>
   <link href="http://www.ilehao.com/"/>
-  <updated>2014-05-08T10:27:09+08:00</updated>
+  <updated>2014-05-08T15:08:40+08:00</updated>
   <id>http://www.ilehao.com/</id>
   <author>
     <name><![CDATA[乐皓]]></name>
@@ -71,7 +71,9 @@
 
 <h2>参考资料：</h2>
 
-<p><a href="http://www.ilehao.com/resources/linux-performance-analysis-and-tools.pdf">linux-performance-analysis-and-tools.pdf</a></p>
+<p><a href="http://www.ilehao.com/resources/linux-performance-analysis-and-tools.pdf" target="_blank ">linux-performance-analysis-and-tools.pdf</a>
+<a href="http://docs.oracle.com/cd/E24847_01/html/E22192/gcfba.html#scrolltoc" target="_blank ">DTrace简介</a>
+<a href="https://www.ibm.com/developerworks/cn/linux/l-cn-perf1" target="_blank ">Pref简介</a></p>
 ]]></content>
   </entry>
   
