@@ -9,7 +9,7 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="最近工作中碰到需要解析超大XML的问题（XML文件超过1G），并且在处理中还碰到无法解析的异常(org.xml.sax.SAXParseException: An invalid XML character (Unicode: 0x19) was found in the element &hellip;">
+  <meta name="description" content="运行时数据区包含：方法区(method area)、虚拟机栈(VM Stack)、本地方法栈(Native Method Stack)、堆(Heap)、程序计数器(Program Counter Register) 各种区出现Error的情况： 虚拟机栈 如果线程请求的栈深度大小虚拟机所允许的深度 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/10/28/jvm-study-note1/">深入理解Javn 虚拟机 学习笔记一</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-10-28T20:01:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/10/28/jvm-study-note1/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>运行时数据区包含：方法区(method area)、虚拟机栈(VM Stack)、本地方法栈(Native Method Stack)、堆(Heap)、程序计数器(Program Counter Register)</p>
+
+<p>各种区出现Error的情况：</p>
+
+<h1>虚拟机栈</h1>
+
+<ul>
+<li>如果线程请求的栈深度大小虚拟机所允许的深度，将抛出StackOverflowError异常</li>
+<li>如果虚拟机栈可以动态扩展(当前大部分的Java虚拟机都可以动态扩展，只不过虚拟机规范中也允许固定长度的虚拟机栈)，当扩展时无法申请到足够的内存时会抛出OouOfMemoryError异常
+
+<h1>本地方法栈</h1></li>
+<li>因为有的虚拟机(例如 Sun HotSpot)直接是把本地方法栈和虚拟机栈合二为一，所以与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError和OutOfMemoryError异常
+
+<h1>Java 堆</h1></li>
+<li>如果堆中没有内存完成实例分配，并且堆也无法再扩展时，将会抛出OutOfMemoryError异常
+
+<h1>方法区</h1></li>
+<li>如果方法区无法满足内存分配需求时，将抛出OutOfMemoryError异常
+
+<h1>运行时常量池(Runtime Constant Pool)</h1></li>
+<li>由于运行时常量池也是方法区的一部分，所以也会受到方法区内存的限制，当常量池无法再申请到内存时会抛出OutOfMemoryError异常
+
+<h1>直接内存</h1></li>
+<li>如果服务器管理员配置虚拟机参数时，只考虑实际内存设置 -Xmx等参数信息，而忽略掉了直接内存，使得各个内存区域的总和大于物理内存限制(包括物理上的和操作系统级的限制)，从而会导致动态扩展时出现OutOfMemoryError异常</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -707,6 +770,10 @@ StrictHostKeyChecking no
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/05/09/linux-command-operation/">linux服务器常用操作和命令</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/08/server-performance/">服务器性能分析工具</a>
       </li>
     
@@ -720,10 +787,6 @@ StrictHostKeyChecking no
     
       <li class="post">
         <a href="/blog/2014/03/21/string-intern/">我对String及String.intern()的理解</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/19/linux-apache-grep-log/">linux下grep分析APACHE 服务器日志 命令集合</a>
       </li>
     
   </ul>
