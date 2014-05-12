@@ -113,19 +113,13 @@ Load是用来度量服务器工作量的大小，即计算机cpu任务执行队�
 <p>5 如何查看单个进程占用的内存大小？<br/>
 可以使用top -p PID，pmap -x PID，ps aux|grep PID命令，也可以通过/proc/$process_id（进程的PID）/status文件查看，例如/proc/7159/status文件。</p>
 
-<p>6 无法从linux服务器A登录到服务器B怎么办？<br/>
-首先请确认服务器A和B是属于同一个应用，不同应用无法交叉登录。<br/>
-1). 当服务器A无法登录服务器B时，可以使用ping IP和telnet IP 36000命令确认服务器B是否死机，ssh服务是否正常。<br/>
-如果有异常，登录open.qq.com管理中心重启服务器（详细操作说明见：CVM_V2申请和管理#3.2 服务器重启）。 <br/>
-2). 如果可以通过客户端直接访问服务器B，但是不能从服务器A登录服务器B，请通过企业QQ联系运维支持协助定位。</p>
-
-<p>7 如何查看正在使用的服务和端口？<br/>
+<p>6 如何查看正在使用的服务和端口？<br/>
 可以使用netstat -tunlp，netstat -antup，lsof -i:PORT命令查看。</p>
 
-<p>8 如何查看服务器进程信息？<br/>
+<p>7 如何查看服务器进程信息？<br/>
 可以使用ps auxww|grep PID，ps -ef，lsof -p PID，top -p PID命令查看。</p>
 
-<p>9 如何杀死进程？<br/>
+<p>8 如何杀死进程？<br/>
 可以使用kill -9 PID（进程号），killall 程序名（比如killall cron）来杀死进程。
 如果要杀死的是僵尸进程，则需要杀掉进程的父进程才有效果，命令为： kill -9 ppid（ppid为父进程ID号，可以通过ps -o ppid PID查找，例如ps -o ppid 32535）。</p>
 
