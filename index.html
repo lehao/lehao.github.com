@@ -299,36 +299,36 @@ uname -a，cat /proc/version，cat /etc/issue</p>
 
 <h3>基础工具：</h3>
 
-<pre><code>• uptime
-• top or htop
-• mpstat
-• iostat
-• vmstat
-• free
-• ping
-• nicstat
-• dstat
+<pre><code>• uptime 查询系统负载信息
+• top or htop 性能分析工具，能够实时显示系统中各个进程的资源占用状况
+• mpstat 实时系统监控工具,统计与CPU相关的一些信息，存放在/proc/stat文件
+• iostat IO分析工具，统计进程IO请求下发的数量、系统处理IO请求的耗时
+• vmstat 查看虚拟内存（Virtual Memory）使用状况的工具
+• free 内存使用情况，存放在/proc/meminfo中
+• ping 网络命令
+• nicstat 网络流量统计工具,源于Solaris,后来被Tim Cook移植到了Linux平台。
+• dstat 多功能系统资源统计生成工具
 </code></pre>
 
 <h3>中级工具：</h3>
 
-<pre><code>• sar
-• netstat
-• pidstat
-• strace
-• tcpdump
-• blktrace
-• iotop
-• slabtop
-• sysctl
-• /proc
+<pre><code>• sar System Activity Reporter系统活动情况报告，比较全面的系统性能分析工具
+• netstat 用于显示linux中各种网络相关信息
+• pidstat 获取每个进程使用cpu、内存和磁盘等系统资源的统计信息
+• strace 用来跟踪进程执行时的系统调用和所接收的信号
+• tcpdump (dump the traffic on a network)，根据使用者的定义对网络上的数据包进行截获的包分析工具
+• blktrace 针对Linux内核中块设备I/O层的跟踪工具
+• iotop 用来监视磁盘I/O使用状况的 top 类工具
+• slabtop 实时的显示内核slab缓存信息，存放在/proc/slabinfo
+• sysctl 一个允许您改变正在运行中的Linux系统的接口
+• /proc 一个虚拟文件系统
 </code></pre>
 
 <h3>高级工具：</h3>
 
-<pre><code>• perf
-• DTrace
-• SystemTap
+<pre><code>• perf 用来进行软件性能分析的工具
+• DTrace 性能诊断工具
+• SystemTap 内核探测工具
 • and more ...
 </code></pre>
 
