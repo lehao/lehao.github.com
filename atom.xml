@@ -4,7 +4,7 @@
   <title><![CDATA[乐皓博客]]></title>
   <link href="http://www.ilehao.com/atom.xml" rel="self"/>
   <link href="http://www.ilehao.com/"/>
-  <updated>2014-05-20T16:14:36+08:00</updated>
+  <updated>2014-08-12T14:37:46+08:00</updated>
   <id>http://www.ilehao.com/</id>
   <author>
     <name><![CDATA[乐皓]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[linux/unix命令行终端的光标及字符控制快捷键]]></title>
+    <link href="http://www.ilehao.com/blog/2014/08/12/linux-shortcut-key/"/>
+    <updated>2014-08-12T14:35:00+08:00</updated>
+    <id>http://www.ilehao.com/blog/2014/08/12/linux-shortcut-key</id>
+    <content type="html"><![CDATA[<p>常用的快捷键：</p>
+
+<pre><code>Ctrl + d        删除一个字符，相当于通常的Delete键（命令行若无所有字符，则相当于exit；处理多行标准输入时也表示eof）
+Ctrl + h        退格删除一个字符，相当于通常的Backspace键
+Ctrl + u        删除光标之前到行首的字符
+Ctrl + k        删除光标之前到行尾的字符
+Ctrl + c        取消当前行输入的命令，相当于Ctrl + Break
+Ctrl + a        光标移动到行首（Ahead of line），相当于通常的Home键
+Ctrl + e        光标移动到行尾（End of line）
+Ctrl + f        光标向前(Forward)移动一个字符位置
+Ctrl + b        光标往回(Backward)移动一个字符位置
+Ctrl + l        清屏，相当于执行clear命令
+Ctrl + p        调出命令历史中的前一条（Previous）命令，相当于通常的上箭头
+Ctrl + n        调出命令历史中的下一条（Next）命令，相当于通常的上箭头
+Ctrl + r        显示：号提示，根据用户输入查找相关历史命令（reverse-i-search）
+</code></pre>
+
+<p>次常用快捷键：</p>
+
+<pre><code>Alt + f         光标向前（Forward）移动到下一个单词
+Alt + b         光标往回（Backward）移动到前一个单词
+Ctrl + w        删除从光标位置前到当前所处单词（Word）的开头
+Alt + d         删除从光标位置到当前所处单词的末尾
+Ctrl + y        粘贴最后一次被删除的单词
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[linux服务器常用操作和命令]]></title>
@@ -1470,55 +1503,6 @@ git push origin source
 
 <p>** 常见问题
 乱码，请设置<code>LC_ALL=zh_CN.UTF-8和LANG=zh_CN.UTF-8</code></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[python 学习笔记一]]></title>
-    <link href="http://www.ilehao.com/blog/2012/11/04/python-study-note-1/"/>
-    <updated>2012-11-04T22:15:00+08:00</updated>
-    <id>http://www.ilehao.com/blog/2012/11/04/python-study-note-1</id>
-    <content type="html"><![CDATA[<p>之前很粗的学习了下python，没有什么总结，只是写了几个简单的case。
-现在总结下常用的一些命令吧。</p>
-
-<p>pythons的setuptools安装</p>
-
-<pre><code>wget http://pypi.python.org/packages/source/d/distribute/distribute-0.6.30.tar.gz
-tar -xzvf ./distribute-0.6.30.tar.gz 
-cd distribute-0.6.30/
-python3 ./setup.py install
-</code></pre>
-
-<p>查看setup的命令：</p>
-
-<pre><code>python setup.py --help-commands
-</code></pre>
-
-<p>查看BIF
-在IDLE shell中，键入</p>
-
-<pre><code>dir(__builtins__)
-</code></pre>
-
-<p>alt+p 上一个命令 alt+n 下一个命令
-构建发布
-先创建一个setup.py文件</p>
-
-<pre><code>from setuptools import setup
-setup(name='',version='',author='')
-</code></pre>
-
-<p>然后执行以下命令</p>
-
-<pre><code>python setup.py sdist
-python setup.py install
-</code></pre>
-
-<p>发布到pypi上</p>
-
-<pre><code>python setup.py register
-python setup.py sdist upload
-</code></pre>
 ]]></content>
   </entry>
   

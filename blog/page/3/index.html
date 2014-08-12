@@ -9,7 +9,8 @@
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="运行时数据区包含：方法区(method area)、虚拟机栈(VM Stack)、本地方法栈(Native Method Stack)、堆(Heap)、程序计数器(Program Counter Register) 各种区出现Error的情况： 虚拟机栈 如果线程请求的栈深度大小虚拟机所允许的深度 &hellip;">
+  <meta name="description" content="之前很粗的学习了下python，没有什么总结，只是写了几个简单的case。
+现在总结下常用的一些命令吧。 pythons的setuptools安装 wget http://pypi.python.org/packages/source/d/distribute/distribute-0.6.30. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +66,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/11/04/python-study-note-1/">Python 学习笔记一</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-04T22:15:00+08:00" pubdate data-updated="true">Nov 4<span>th</span>, 2012</time>
+        
+         | <a href="/blog/2012/11/04/python-study-note-1/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>之前很粗的学习了下python，没有什么总结，只是写了几个简单的case。
+现在总结下常用的一些命令吧。</p>
+
+<p>pythons的setuptools安装</p>
+
+<pre><code>wget http://pypi.python.org/packages/source/d/distribute/distribute-0.6.30.tar.gz
+tar -xzvf ./distribute-0.6.30.tar.gz 
+cd distribute-0.6.30/
+python3 ./setup.py install
+</code></pre>
+
+<p>查看setup的命令：</p>
+
+<pre><code>python setup.py --help-commands
+</code></pre>
+
+<p>查看BIF
+在IDLE shell中，键入</p>
+
+<pre><code>dir(__builtins__)
+</code></pre>
+
+<p>alt+p 上一个命令 alt+n 下一个命令
+构建发布
+先创建一个setup.py文件</p>
+
+<pre><code>from setuptools import setup
+setup(name='',version='',author='')
+</code></pre>
+
+<p>然后执行以下命令</p>
+
+<pre><code>python setup.py sdist
+python setup.py install
+</code></pre>
+
+<p>发布到pypi上</p>
+
+<pre><code>python setup.py register
+python setup.py sdist upload
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -705,46 +784,9 @@ StrictHostKeyChecking no
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/28/blog-life/">博客人生</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-28T06:39:00+08:00" pubdate data-updated="true">Oct 28<span>th</span>, 2012</time>
-        
-         | <a href="/blog/2012/10/28/blog-life/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>之前一直想弄个blog，可是一直没有时间。 <br/>
-今天心血来潮，凌晨4点起来，把它弄了个模型，算是一个好的开始吧。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -770,6 +812,10 @@ StrictHostKeyChecking no
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2014/08/12/linux-shortcut-key/">linux/unix命令行终端的光标及字符控制快捷键</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2014/05/09/linux-command-operation/">linux服务器常用操作和命令</a>
       </li>
     
@@ -783,10 +829,6 @@ StrictHostKeyChecking no
     
       <li class="post">
         <a href="/blog/2014/03/27/thread-wait-sleep/">Thread.sleep()与Object.wait()的区别</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/03/21/string-intern/">我对String及String.intern()的理解</a>
       </li>
     
   </ul>

@@ -5,11 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>super-awesome - 乐皓博客</title>
+  <title>linux/unix命令行终端的光标及字符控制快捷键 - 乐皓博客</title>
   <meta name="author" content="乐皓">
 
   
-  <meta name="description" content="Super-awesome Oct 10th, 2012 Oct 10th, 2012 Comments Please enable JavaScript to view the comments powered by Disqus. About Me java程序员，老猿人，孩子他爸 爱篮球， &hellip;">
+  <meta name="description" content="常用的快捷键： Ctrl + d 删除一个字符，相当于通常的Delete键（命令行若无所有字符，则相当于exit；处理多行标准输入时也表示eof）
+Ctrl + h 退格删除一个字符，相当于通常的Backspace键
+Ctrl + u 删除光标之前到行首的字符
+Ctrl + k &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.ilehao.com/super-awesome/">
+  <link rel="canonical" href="http://www.ilehao.com/blog/2014/08/12/linux-shortcut-key/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -64,32 +67,15 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Super-awesome</h1>
-    <p class="meta">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-10T16:28:00+08:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time></p>
-  </header>
-  
-  
-
-  
-    <footer>
+    
+      <h1 class="entry-title">Linux/unix命令行终端的光标及字符控制快捷键</h1>
+    
+    
       <p class="meta">
         
-        
 
 
 
@@ -101,19 +87,82 @@
   
 
 
-<time datetime="2012-10-10T16:28:00+08:00" pubdate data-updated="true">Oct 10<span>th</span>, 2012</time>
+<time datetime="2014-08-12T14:35:00+08:00" pubdate data-updated="true">Aug 12<span>th</span>, 2014</time>
+        
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>常用的快捷键：</p>
+
+<pre><code>Ctrl + d        删除一个字符，相当于通常的Delete键（命令行若无所有字符，则相当于exit；处理多行标准输入时也表示eof）
+Ctrl + h        退格删除一个字符，相当于通常的Backspace键
+Ctrl + u        删除光标之前到行首的字符
+Ctrl + k        删除光标之前到行尾的字符
+Ctrl + c        取消当前行输入的命令，相当于Ctrl + Break
+Ctrl + a        光标移动到行首（Ahead of line），相当于通常的Home键
+Ctrl + e        光标移动到行尾（End of line）
+Ctrl + f        光标向前(Forward)移动一个字符位置
+Ctrl + b        光标往回(Backward)移动一个字符位置
+Ctrl + l        清屏，相当于执行clear命令
+Ctrl + p        调出命令历史中的前一条（Previous）命令，相当于通常的上箭头
+Ctrl + n        调出命令历史中的下一条（Next）命令，相当于通常的上箭头
+Ctrl + r        显示：号提示，根据用户输入查找相关历史命令（reverse-i-search）
+</code></pre>
+
+<p>次常用快捷键：</p>
+
+<pre><code>Alt + f         光标向前（Forward）移动到下一个单词
+Alt + b         光标往回（Backward）移动到前一个单词
+Ctrl + w        删除从光标位置前到当前所处单词（Word）的开头
+Alt + d         删除从光标位置到当前所处单词的末尾
+Ctrl + y        粘贴最后一次被删除的单词
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
       
-        <div class="sharing">
+  
+
+<span class="byline author vcard">Posted by <span class="fn">乐皓</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-12T14:35:00+08:00" pubdate data-updated="true">Aug 12<span>th</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
   
   
   
 </div>
 
+    
+    <p class="meta">
       
-    </footer>
-  
+        <a class="basic-alignment left" href="/blog/2014/05/09/linux-command-operation/" title="Previous Post: linux服务器常用操作和命令">&laquo; linux服务器常用操作和命令</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
   <section>
@@ -211,8 +260,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://www.ilehao.com/super-awesome/index.html';
-        var disqus_url = 'http://www.ilehao.com/super-awesome/index.html';
+        var disqus_identifier = 'http://www.ilehao.com/blog/2014/08/12/linux-shortcut-key/';
+        var disqus_url = 'http://www.ilehao.com/blog/2014/08/12/linux-shortcut-key/';
         var disqus_script = 'embed.js';
       
     (function () {
